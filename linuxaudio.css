@@ -1,9 +1,43 @@
 body {
 	font-family: courier, fixed, monospace;
-	text-align: center;
 	color: #FFFFFF;
 	background-color: #373749;
+	text-align: center;
 }
 
 
+a:link {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
 
+a:visited {
+	color: white;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+#wrapper {
+	position: absolute;
+	bottom: 0em;
+	height: 100%;
+	width: 99%;
+}
+
+#license {
+	position: absolute;	/*to centre an element with an absolute position*/
+	bottom: 0em;			/*you have to set left,right position to same value*/
+	left: 0em;
+	right: 0em;
+	margin-left: auto;
+	margin-right: auto;
+}
+	
+#license_image {
+	position: relative;
+}
+
+#license_text {
+	position: relative;
+}
