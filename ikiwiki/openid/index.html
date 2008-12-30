@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>openid</title>
+
+<link rel="stylesheet" href="../../style.css" type="text/css" />
+<link rel="stylesheet" href="../../local.css" type="text/css" />
+
+
+
+</head>
+<body>
+
+<div class="pageheader">
+<div class="header">
+<span>
+<span class="parentlinks">
+
+<a href="./../../">wiki</a>/ 
+
+<a href="./../">ikiwiki</a>/ 
+
+</span>
+<span class="title">
+openid
+</span>
+</span><!--.header-->
+
+</div>
+
+
+</div> <!-- .pageheader -->
+
+
+
+<div id="content">
+<p>[[!meta title="OpenID"]]
+[[!meta robots="noindex, follow"]]</p>
+
+<p>This wiki has OpenID <strong>enabled</strong>.</p>
+
+<p><a href="http://openid.net">OpenID</a> is a decentralized authentication mechanism
+that allows you to have one login that you can use on a growing number of
+websites.</p>
+
+<p>To sign up for an OpenID, visit one of the following identity providers:</p>
+
+<ul>
+<li><a href="https://www.myopenid.com/">MyOpenID</a></li>
+<li><a href="https://getopenid.com/">GetOpenID</a></li>
+<li><a href="http://videntity.org/">Videntity</a></li>
+<li><a href="http://www.livejournal.com/openid/">LiveJournal</a></li>
+<li><a href="https://openid.trustbearer.com/">TrustBearer</a></li>
+<li>or any of the <a href="http://openiddirectory.com/openid-providers-c-1.html">many others out there</a>.</li>
+</ul>
+
+<p>Your OpenID is the URL that you are given when you sign up.
+To sign in to this wiki using OpenID, just enter it in the OpenID field in the
+signin form. You do not need to give this wiki a password or go through any
+registration process when using OpenID.</p>
+
+<hr />
+
+<p>It's also possible to make a page in the wiki usable as an OpenID url,
+by delegating it to an openid server. Here's an example of how to do that:</p>
+
+<pre><code>[[!meta openid="http://yourid.myopenid.com/"
+       server="http://www.myopenid.com/server"]]
+</code></pre>
+
+</div>
+
+<div id="footer" class="pagefooter">
+<div id="pageinfo">
+
+
+
+
+<div id="backlinks">
+Links:
+
+<a href="./../">ikiwiki</a>
+
+<a href="./../../openid/">openid</a>
+
+
+</div><!-- #backlinks -->
+
+
+
+
+
+
+<div class="pagedate">
+Last edited Mon 04 Aug 2008 06:43:27 PM CEST
+<!-- Created Mon 04 Aug 2008 06:43:27 PM CEST -->
+</div>
+
+</div><!-- #pageinfo -->
+
+<!-- from wiki -->
+</div><!-- .pagefooter #footer -->
+
+</body>
+</html>

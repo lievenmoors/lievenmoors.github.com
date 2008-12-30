@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>preprocessordirective</title>
+
+<link rel="stylesheet" href="../../style.css" type="text/css" />
+<link rel="stylesheet" href="../../local.css" type="text/css" />
+
+
+
+</head>
+<body>
+
+<div class="pageheader">
+<div class="header">
+<span>
+<span class="parentlinks">
+
+<a href="./../../">wiki</a>/ 
+
+<a href="./../">ikiwiki</a>/ 
+
+</span>
+<span class="title">
+preprocessordirective
+</span>
+</span><!--.header-->
+
+</div>
+
+
+</div> <!-- .pageheader -->
+
+
+
+<div id="content">
+<p>[[!meta robots="noindex, follow"]]
+Preprocessor directives are similar to a <a href="./../wikilink/">WikiLink</a> in form, except they
+begin with <code>!</code> and may contain parameters. The general form is:</p>
+
+<pre><code>[[!directive param="value" param="value"]]
+</code></pre>
+
+<p>This gets expanded before the rest of the page is processed, and can be used
+to transform the page in various ways.</p>
+
+<p>The quotes around values can be omitted if the value is a simple word.
+Also, some directives may use parameters without values, for example:</p>
+
+<pre><code>[[!tag foo]]
+</code></pre>
+
+<p>A preprocessor directive does not need to all be on one line, it can be
+wrapped to multiple lines if you like:</p>
+
+<pre><code>[[!directive foo="baldersnatch"
+bar="supercalifragalisticexpealadocious" baz=11]]
+</code></pre>
+
+<p>Also, multiple lines of <em>quoted</em> text can be used for a value.
+To allow quote marks inside the quoted text, delimit the block
+of text with triple-quotes:</p>
+
+<pre><code>[[!directive text="""
+1. "foo"
+2. "bar"
+3. "baz"
+"""]]
+</code></pre>
+
+<p>ikiwiki also has an older syntax for preprocessor directives, which requires a
+space in directives to distinguish them from <a href="./../wikilink/">wikilinks</a>.  This
+syntax has several disadvantages: it requires a space after directives with no
+parameters (such as <code>[[pagecount ]]</code>), and it prohibits spaces in
+<a href="./../wikilink/">wikilinks</a>.  ikiwiki now provides the <code>!</code>-prefixed syntax shown
+above as the preferred alternative.  However, ikiwiki still supports wikis
+using the older syntax, if the <code>prefix_directives</code> option is not enabled.
+For backward compatibility with existing wikis, this option currently
+defaults to off, so ikiwiki supports the old syntax.</p>
+
+</div>
+
+<div id="footer" class="pagefooter">
+<div id="pageinfo">
+
+
+
+
+<div id="backlinks">
+Links:
+
+<a href="./../blog/">blog</a>
+
+<a href="./../">ikiwiki</a>
+
+<a href="./../markdown/">markdown</a>
+
+<a href="./../../preprocessordirective/">preprocessordirective</a>
+
+<a href="./../../shortcuts/">shortcuts</a>
+
+<a href="./../wikilink/">wikilink</a>
+
+
+</div><!-- #backlinks -->
+
+
+
+
+
+
+<div class="pagedate">
+Last edited Mon 04 Aug 2008 06:43:27 PM CEST
+<!-- Created Mon 04 Aug 2008 06:43:27 PM CEST -->
+</div>
+
+</div><!-- #pageinfo -->
+
+<!-- from wiki -->
+</div><!-- .pagefooter #footer -->
+
+</body>
+</html>
