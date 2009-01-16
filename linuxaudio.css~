@@ -1,44 +1,203 @@
+/*colors: grijsblauw:#373749*/ 
+
 body {
-	font-family: courier, fixed, monospace;
+	font-family: courier , fixed, monospace;
+	font-size:15px;
 	color: #FFFFFF;
-	background-color: #373749;
-	text-align: center;
+	background-color: #2A3749;
+	text-align: left;
 }
 
 
 a:link {
-	color: white;
-	font-weight: bold;
-	text-decoration: none;
+	color: #FFFFFF;
+	text-decoration: underline;
 }
 
+
 a:visited {
-	color: white;
-	font-weight: normal;
-	text-decoration: none;
+	text-decoration: underline;
+	color: #FFFFFF;
 }
+
 
 #wrapper {
 	position: absolute;
 	bottom: 0em;
 	height: 100%;
 	width: 100%;
-	border:none;
+}
+
+div.page {
+	margin-left:50px;
+	margin-right:100px;
+	/*border: 1px solid #000;*/
+	padding:0; 
 }
 
 #license {
 	position: absolute;	/*to centre an element with an absolute position*/
-	bottom: 0em;			/*you have to set left,right position to same value*/
+	bottom: 0.5em;			/*you have to set left,right position to same value*/
 	left: 0em;
 	right: 0em;
 	margin-left: auto;
 	margin-right: auto;
 }
-	
-#license_image {
-	position: relative;
+
+h1 {
+	font-size:1.6em;
+	text-decoration:underline;
+	margin-left:0em;
 }
 
-#license_text {
-	position: relative;
+h2 {
+	font-size:1.3em;
+	margin-top:3em;
+	margin-left:0em;
 }
+
+ul {
+	padding:0;
+	
+	/*border: 1px solid #000;*/
+	
+}
+
+li {
+	padding-left:0.5em;
+	/*border: 1px solid #000;*/
+}
+
+ul.level1 {
+	margin-top: 2.7em;
+	margin-left:1.9em;
+	margin-right:5em;
+}
+
+li.level1 {
+	/*border: 1px solid #000;*/
+	margin-bottom:1em;
+}
+
+ul.level2 {
+	margin-top: 0.5em;
+	margin-left:2em;
+}
+
+li.level2 {
+	margin-bottom:0.5em;
+}
+
+.footnotes {
+	margin-top:3em;
+}
+
+a.ftnsymbol {
+	font-size:0.8em;
+	vertical-align:top;
+	text-decoration:none;
+}
+
+
+p.ftn {
+position:relative;
+margin:0;
+font-size:0.9em
+float:left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+p.numbered_title {
+	margin-left:0;
+	margin-right:0;
+	margin-top:0;
+	margin-bottom:0;
+	border:none;
+	padding:0;
+	text-indent:0;
+	text-align:left;
+	font-weight:normal;
+	font-size:21.333334px;
+	text-decoration:none}
+
+span.Footnoteanchor {font-size:58%;vertical-align:super}
+span.FootnoteSymbol {}
+p.Footnote {
+	margin-left:18.864px;
+	margin-right:0;
+	margin-top:0;
+	margin-bottom:0;
+	border:none;
+	padding:0;
+	text-indent:-18.864px;
+	font-size:13.333334px}
+
+p.shellcommands {
+	margin-left:0;
+	margin-right:0;
+	margin-top:0;
+	margin-bottom:0;
+	border:none;
+	padding:0;
+	background-color:transparent;
+	font-weight:normal;
+	font-size:16.0px}
+p.Standard {
+	margin-left:0;
+	margin-right:0;
+	margin-top:0;
+	margin-bottom:0;
+	border:none;
+	padding:0;
+	font-size:16.0px}
+p.cursusparagraph {
+	margin-left:0;
+	margin-right:0;
+	margin-top:0;
+	margin-bottom:0;
+	border:none;
+	padding:0;
+	font-size:16.0px}
+.listlevel1cursus {
+	margin-top:0;
+	margin-bottom:0;
+	list-style-type:decimal;
+	clear:left}
+.listlevel2cursus {
+	margin-top:0;
+	margin-bottom:0;
+	list-style-type:bullet;
+	clear:left}
+.listlevel3cursus {
+	margin-top:0;
+	margin-bottom:0;
+	list-style-type:square;
+	clear:left}
+.listlevel4cursus {
+	margin-top:0;
+	margin-bottom:0;
+	list-style-type:disc;
+	clear:left}
