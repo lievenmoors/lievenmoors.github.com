@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>page1</title>
+<meta name="generator" content="Bluefish 1.0.7">
+<meta name="author" content="lieven moors">
+<meta name="date" content="2009-01-17T00:17:27+0100">
+<meta name="copyright" content="">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="refresh" content="6000; URL=http://lievenmoors.github.com/">
+<link href="linuxaudio.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="page">
+<h1>Introduction to GNU/Linux</h1>
+<h2>1. History</h2>
+<ul class="level1">
+	<li class="level1">The name "Linux" comes from the Linux kernel originally written in 1991 by Linus Torvalds.</li>
+	<li class="level1">The system's utilities and libraries usually come from the GNU operating system, announced in 1983 by Richard Stallman. These include the GNU C library (glibc), GCC (GNU Compiler Collection) and the Bash shell.</li>
+	<li class="level1">Both the Linux kernel and the GNU utilities are licensed under the GNU General Public Licence. This licence requires that derived works are released under the same licence. The purpose of this is to protect a number of freedoms: freedom to run the program, freedom to study and adapt the program, freedom to redistribute the program, freedom to improve the program, and release the improvements to the public.</li>
+	<li class="level1">On top of this core system, thousands of libraries and applications have been developed. Many of them are published under the GPL licence, but there are many other open source licences.</li>
+	<li class="level1">A GNU/Linux distribution is a complete operating system consisting of the GNU/Linux core, and a number of distribution specific libraries and applications.</li>
+	<li class="level1">There are more than 300 Linux distributions today. A few of the important ones are: Debian, Red Hat, SUSE, Mandrake and Ubuntu (which is based on Debian).</li>
+	<li class="level1">We will be using Ubuntu Studio, which is a variant of Ubuntu, specifically tailored for audio, video and graphics creation.</li>
+</ul> 
+<h2>2. Basic system layout</h2>
+<ul class="level1">
+	<li class="level1">The GNU/Linux system is a modular system in many ways:
+		<ul class="level2">
+			<li class="level2">The Linux kernel itself is extensible by means of dynamically loadable modules</li>
+			<li class="level2">Command line programs (programs without a graphical user interface) with specific functionality can be combined together to make complex programs.</li>
+			<li class="level2">The Open Source community provides thousands of libraries and programs. Most projects make use of the functionality of many other projects.</li>
+		</ul>
+	</li>
+	<li class="level1">The Linux system is designed to be used by multiple users. Every file and directory has a set  of permissions attached to it, which describe what users can or can't do.</li>
+	<li class="level1">Almost all Linux Distributions make use of the so called Filesystem Hierarchy Standard (FHS). This standard describes roughly what directories should be present on a typical Linux system.</li>
+	<li class="level1">The X Window System provides the standard toolkit and protocol for graphical user interfaces (GUI). A number of GUI toolkits have been build on top of X. The most important are GTK+ (the GIMP toolkit) and Qt (pronounced 'cute'). A lot of Linux programs use of one of these toolkits.</li>
+	<li class="level1">A lot of Linux distributions also provide a complete desktop environment. A desktop environment usually consists of a window manager, a file manager, and programs and libraries for managing the desktop. The two most popular desktop environments are GNOME and KDE (K Desktop Environment). GNOME uses the GTK+ toolkit, and KDE uses Qt. GNOME and KDE also serve as an umbrella for a number of smaller projects (KDE programs often have names that start with the capital K).</li>
+	<li class="level1">A GNU/Linux system is able to run without the use of GUI programs (and even without X). The system provides a command line interface (CLI), from which the user can run command line programs. This kind of interface to the operating system is called a shell. The most common shell on Linux systems today is called the BASH shell. Most shells can also interpret scripts. These are simple unformatted text files in which a sequence of commands can be saved.</li>
+</ul> 
+<h2>3. Working in the shell</h2>
+<ul class="level1">
+	<li class="level1">There are two ways to get access to a Bash shell. The simplest way is to open a terminal emulator from within the graphical environment. (on Ubuntu: applications, accessories, terminal). The other way is to switch to one of the so called virtual terminals. To do this, you type the key combination Ctrl+Alt+F1. This will get you out of the X window system, to the first virtual terminal. There are five more virtual terminals located at Ctrl+Alt+(F2-F6). Ctrl+Alt+F7 will get you back to X <a href="#ftn1" class="ftnsymbol" id="bodyftn1">[1]</a>. You will have to login before you can use the virtual terminal (give your username and password).</li>
+	<li class="level1">A command can be entered by typing the name of the command at the Bash prompt, when you press 'Enter' the command will be executed (if the shell thinks it is valid). Commands can have options. These options can change the default behaviour of the program. Options can consist of a single letter or digit, preceded by a dash (e.g. "-o"). But often you can choose between short and long options. A long option is mostly preceded by two dashes (e.g. "--option"). Short options can be combined, with one dash ("-Xyz"). The shell uses whitespace (space, tab, newline) to distinguish between command, options and other arguments, just as we split sentences in words. So you should always separate commands and arguments at least with one space. Besides options, commands can take any number of other arguments (e.g. a filename) <a href="#ftn2" class="ftnsymbol" id="bodyftn2">[2]</a>. You can look up all the options and arguments a command can take in the manual file of that command.</li>
+	<li class="level1">An important concept when working with a Linux System is the pathname. A pathname describes the location of a file or directory within the system. A pathname can be absolute, or relative. An absolute pathname describes the position of a file relative to the system root directory. The system root directory is represented by a simple slash (/). After the root slash, any number of subdirectories can be given, separated from each other with more slashes (e.g. /home/lieven/my_directory, /home/lieven/my_directory/my_file). You can recognize an absolute pathname, because it always starts with a slash. A relative pathname describes the location of a file or directory relative to your current working directory. The current working directory of your shell can be changed <a href="#ftn3" class="ftnsymbol" id="bodyftn3">[3]</a>. So a relative pathname can mean different things to the system, depending on your position in the directory tree. A relative pathname never starts with a slash (e.g. my_dir/my_file), and the shell expands the pathname automatically into an absolute pathname (into e.g. /home/lieven/my_dir/my_file). When you open a new terminal, your current working directory will probably be your own home directory (/home/your_user_name). Every directory on a Linux system also contains two special directories: "." and ".." (dot, dot dot). They can be used in absolute, or relative pathnames <a href="#ftn4" class="ftnsymbol" id="bodyftn4">[4]</a>. One dot refers to the directory in which it is contained, two dots refer to the parent directory of that directory.</li>
+</ul>
+<div class="footnotes">
+<a class="ftnsymbol" href="#bodyftn1" id="ftn1">[1]</a><p class="ftn"> Once you're out of X, you can just type Alt+(F1-F7)</p>
+<a class="ftnsymbol" href="#bodyftn2" id="ftn2">[2]</a><p class="ftn"> Sometimes options can take arguments themselves (e.g. in 'tar -xvf archive.tar', archive.tar is an argument to the -f option)</p>
+<a class="ftnsymbol" href="#bodyftn3" id="ftn3">[3]</a><p class="ftn"> The current working directory is associated with a process, in this case the Bash shell.</p>
+<a class="ftnsymbol" href="#bodyftn4" id="ftn4">[4]</a><p class="ftn"> They are actually links.</p>
+</div>
+</div>
+</body>
+</html>
