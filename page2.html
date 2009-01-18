@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>page2</title>
+<meta name="generator" content="Bluefish 1.0.7">
+<meta name="author" content="lieven moors">
+<meta name="date" content="2009-01-18T13:25:19+0100">
+<meta name="copyright" content="">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="refresh" content="6000; URL=http://lievenmoors.github.com/">
+<link href="linuxaudio.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="page">
+<h1>ALSA (Advanced Linux Sound Architecture)</h1>
+<h2>1. Introduction</h2>
+<ul class="level1">
+	<li class="level1">ALSA provides audio and midi functionality for the Linux system. Alsa is split up into a number of different parts:
+		<ul class="level2">
+			<li class="level2">Alsa provides a lot of modules (extensions to the kernel), which let the system communicate with many types of audio interfaces. These modules are also called drivers and they are now included in the regular kernel (alsa-driver).</li>
+			<li class="level2">A library, which audio and midi application programmers can use as an interface to the low level kernel functions (alsa-lib).</li>
+			<li class="level2">A number of utilities which provide basic alsa functionality. You can use these to configure, test or troubleshoot your audio system (alsa-utils).</li>
+			<li class="level2">A number of tools for specific sound hardware (alsa-tools).</li>
+			<li class="level2">A number of firmwares for sound cards. Firmware is a computer program that is embedded in a hardware device. Some sound cards need firmware loaded into them to function properly (alsa-firmware).</li>
+			<li class="level2">A number of plugins which give the ALSA system additional functionality (alsa-plugins).</li>
+			<li class="level2">Support for the older and now depreciated Open Sound System (OSS). OSS used to be the default API (Application Programmers Interface) for audio programs on Linux and Unix. ALSA provides a number of modules, that let programs written for OSS talk to the ALSA system (alsa-oss).</li>
+		</ul>
+	</li>	
+</ul>
+<p class="line"></p>
+<h2>1.ALSA Modules</h2>
+<ul class="level1">
+	<li class="level1">The ALSA modules you need for your sound card(s) will normally be loaded automatically by the Udev system. On Linux, programs can talk to specific hardware (drivers) by means of a special kind of file. These files are called 'device files', and they reside in the '/dev/' directory. The Udev system is responsible for making these files dynamically when new hardware is detected. On Ubuntu, the device files for your sound cards will be located in the '/dev/snd/' directory. In addition to making the device files, Udev is also able to load the necessary kernel modules, for that device.</li>
+	<li class="level1">Modules are usually loaded with the <span class="command">modprobe</span> command (also used by Udev). You have to give the name of the module you want to load as an argument. Sometimes, certain modules can depend on other modules, which have to be loaded first. Modprobe will always make sure that these are loaded as well. If you run modprobe with the "-r" option, it will remove the module instead. You can see a list of all modules that are currently loaded with <span class="command">lsmod</span>. And if you want more information about a specific module (even if it is not loaded), you can use the <span class="command">modinfo</span> command.</li>
+	<li class="level1">Modules can also accept options when they are loaded. An example of such an option when loading sound card modules, is the "index" option. sound cards always get assigned an index number starting from 0. So if you have two sound cards, one will have  an index of 0, the other of 1. The sound card with an index of 0 will be the default sound card for ALSA. When Udev loads these modules for you, the order in which they are loaded will be determined randomly. When you load a module with the "index" option, you can determine the index yourself <a href="#ftn1" class="ftnsymbol" id="bodyftn1">[1]</a>. There are two ways to pass options when loading modules. Firstly, you can give the options to the 'modprobe' command directly (e.g. 'modprobe snd_intel8x0 index=0'). Secondly, you can save your options for specific modules in you own configuration file in the '/etc/modprobe.d/' directory. Just make a new file in this directory (with your chosen name), and put a line like this in it: options snd_intel8x0 index=0 id="my_card". From now on, whenever this particular module is loaded, it will be loaded with these two options (index=0 id="my_card"). For every module you want to load with specific options, you can put a line like this in this file. With the modinfo command (e.g. 'modinfo snd_intel8x0'), you can see which options can be used with that module.</li>
+	<li class="level1">When you want to load a module at system startup (when it is not automatically loaded by Udev), you can write the name of the module (one per line) in the file '/etc/modules'. The modules will be loaded in the same order as they appear in the file.</li>
+</ul>
+<p class="line"></p>
+<h2>2. ALSA Library</h2>
+<ul class="level1">
+	<li class="level1">Internally, the ALSA library uses a number of plugins <a href="#ftn2" class="ftnsymbol" id="bodyftn2">[2]</a> which extend the functionality of the  PCM driver. When you want to play something to a specific device, you can specify which plugin(s) you are going to use to access that device. By default, the ALSA library has defined a number of 'interfaces' which use one or more of these plugins to communicate with the driver. The most commonly used interfaces are "hw" and "plughw".
+		<ul class="level2">
+			<li class="level2">The <span class="command">hw</span> interface only uses the "hw" plugin, and this plugin communicates directly (without conversions) with the ALSA driver. With this interface, you have to make sure that the audio stream matches the PCM device (e.g. make sure your audio file has the right sample rate for your sound card driver).</li>
+			<li class="level2">The <span class="command">plughw</span> interface uses the "plug" plugin, and the "hw" plugin <a href="#ftn3" class="ftnsymbol" id="bodyftn3">[3]</a>. The "plug" plugin is able to convert the channels, rate and format of the PCM stream. When you use the "plughw" interface, alsa will try to convert the PCM stream as necessary so that it fits the channels, rate and format of the hardware driver.</li>
+		</ul>
+	</li>
+	<li class="level1">Both these interfaces can take three arguments: CARD, DEV, SUBDEV. If you would use all of them, you would write something like this, to denote a specific hardware device: <span class="command">plughw:0,0,0</span> . First you specify the interface, then a colon, then you give the arguments you want to pass to that interface, separated by comma's. You don't have to specify all of the arguments. When you don't, the default value for that argument will be used. For example: "plughw", "plughw:0", "plughw:0,0", "plughw:0,0,0" are all valid device strings.
+		<ul class="level2">
+			<li class="level2">The CARD argument can be the index or the id of the sound card you want to use. The id is a name associated with your sound card, and you can choose it yourself if you use the id="my_id" option, when the sound card module is loaded.</li>
+			<li class="level2">The DEV argument refers to a "device" on that sound card. These devices can belong to three different types: digital audio devices (for playback or capture), control devices (such as mixers or equalizers), or MIDI devices (such as sequencers or sound generators). You can refer to a specific device with the index number of that device. These numbers are not unique though. For example: index 0 can refer to both to the first playback device, as to the first recording device. ALSA will determine which one you need, depending on how you use it.</li>
+			<li class="level2">The SUBDEV argument refers to a subdevice of the specified device. Example: some sound cards provide a way to mix audio streams from the hardware level. This is called hardware mixing. The card will provide the user with a number of 'virtual' outputs, which are then mixed together to the 'real' outputs. You can then use the SUBDEV index to access each virtual output.</li>
+		</ul>
+	</li>
+</ul>
+<p class="line"></p>
+<h2>3. ALSA Utilities</h2>
+<ul class="level1">
+	<li class="level1"><span class="command">aplay, arecord</span>
+		<ul class="level2">
+			<li class="level2">These command line utilities, can be used to play and record audio. When you don't specify a device, they will use the "default" ALSA device. The default device will use card 0, device 0, and subdevice -1 (-1 for any available subdevice). In addition it will use a number of plugins to make your life easier (e.g. plug, dmix). If you give aplay a file as an argument, it will play that file. If you give arecord a file as an argument, it will record to that file. If you want to play to, or record from a specific device, you can use the "-D" option and give it a device string (in the form of 'hw:0,0,0') as an argument. With the "-l" option, you can list all available playback or capture devices (depending on which command you use).</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">alsamixer</span>
+		<ul class="level2">
+			<li class="level2">When you start up this program in the terminal, you will get a mixer with all the controls for your sound card. If you have more than one, you can use the "-c" option, and use the index or id of the card as an argument to it. This will give you the mixer for that card. With the F3, F4 and F5 buttons, you can let the mixer show you the playback channels only, the capture channels only, or all the channels. What the mixer shows you, will be indicated on the top left side of the screen (look for "View"). You can also use the "tab" key to scroll through the different view modes. You can use the left and right arrows to scroll through the different channels, and the up or down arrows to change the volume on that particular channel. Use the "m" key to mute or unmute a channel. When it is muted, you will see an "M" (or "MM" for stereo) at the bottom <a href="#ftn4" class="ftnsymbol" id="bodyftn4">[4]</a>. When you select a valid capture channel, you can activate it for recording by pressing the "space" key (this will be indicated in red with "CAPTUR"). To exit alsamixer, you just press the "esc" key.</li>
+			<li class="level2">There are a number of GUI programs you can use as a front end to the alsamixer. These are often a little bit easier to use. On Ubuntu Studio, you will find QAmix in Applications -> Sound&Video -> Audio Production.</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">aplaymidi, arecordmidi</span>
+		<ul class="level2">
+			<li class="level2">These utilities can be used to play or record a midi file given as an argument <a href="#ftn5" class="ftnsymbol" id="bodyftn5">[5]</a>. For this they make use of the ALSA sequencer. The ALSA sequencer can route midi events between connected clients, and provides timing for these events. When clients get connected to the sequencer, they get their own input and/or output ports. You can specify which port you want to use for input or output with the "-p" option and a string of the form: 'client:port' . The client can be specified by it's number, it's name, or a prefix of it's name (f.e. "Zyn" instead of "ZynAddSubFX"). The port is specified by it's number. The first port will usually be port 0, and if you want to use this port, you can leave out the ":port" part of the string. To see a list of the available input or output ports (outputs for aplaymidi, inputs for arecordmidi), you can use the "-l" option.</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">aconnect</span>
+		<ul class="level2">
+			<li class="level2">This utility is used to manage the various connections between clients of the ALSA sequencer. You can give aconnect two arguments in the form of 'client:port' (see above). Aconnect will connect these two ports together. The first port is called the sender port, the second the receiver port. You can have multiple receiver ports connected to one sender. In that case the data is send to all the receiver ports. If you want to delete a connection you can use the "-d" option. To see a list of input ports (possible senders), use the "-i" option, and to see a list of output ports (possible receivers), use the "-o" option. If you want to see the active connections too, you can add "l" to the "-i" or "-o" option.</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">alsactl</span>
+		<ul class="level2">
+			<li class="level2">This utility is used to control the advanced settings for the ALSA sound card drivers. It is used by the '/etc/init.d/alsa-utils' system startup script, to store (at shutdown) and restore (at startup) the settings (f.e. mixer levels) for your sound cards.  The command <span class="command">alsactl store</span> will store all the settings of all your sound cards in a file '/var/lib/alsa/asound.state' by default. You can edit this file by hand if you want to change some advanced features of your sound cards (which are not always shown by mixer programs). The command <span class="command">alsactl restore</span> will restore (load) the settings from that file. If you want to store/restore the settings of a specific card, you can always give alsactl a second argument, which can be the index or id of that card (e.g. alsactl store 1).</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">asoundconf</span>
+		<ul class="level2">
+			<li class="level2">This command can be used to configure the alsa library. The ALSA library has two configuration files which it will always read if they exist. The first one is '/etc/asound.conf' which can be used to change the settings for ALSA system wide. The second one is called .asoundrc (a hidden file), and every user can have have one in it's own home directory. This scheme of having system wide configuration files in the '/etc' directory, and user specific configuration files as hidden files in the users home directory, is the standard way on Linux systems to configure programs. ALSA doesn't need these files to function properly, and they will probably not be present on your system. What you can put in these files is an advanced topic, and we will see a few examples later. Now back to asoundconf... Asoundconf allows you to change the ALSA lib settings as well. It will make a third file called '.asoundrc.asoundconf' in you home directory, and it will put an inclusion statement in your .asoundrc file, which makes sure that '.asoundrc.asoundconf' is also used for your ALSA configuration. If you didn't have an .asoundrc file, asoundconf will make a fresh one for you. You should never edit the '.asoundrc.asoundconf' file by hand. If you decide you don't want to use this extra configuration file any more, you just have to remove the inclusion statement (</home/lieven/.asoundrc.asoundconf>) from your .asoundrc file. I will give you a few examples of how you can use asoundconf: </b>'<span class="command">asoundconf list</span>' : this will show you the names of your available sound cards.</b>'<span class="command">asoundconf set-default-card name_of_card</span>' : this will set your default card.</b>'<span class="command">asoundconf reset-default-card</span>': sets default card back to normal.</li>
+		</ul>
+	</li>
+	<li class="level1">Other Utilities we didn't mention are: <span class="command">amixer</span> (control the mixer from the command line), <span class="command">amidi</span> (read from and write to ALSA RawMIDI ports), <span class="command">aseqnet</span> (to use ALSA sequencer over the network), <span class="command">aseqdump</span> (show the events received at an ALSA sequencer port).</li>
+</ul>
+<p class="line"></p>
+<h2>5. ALSA Tools</h2>
+<ul class="level1">
+	<li class="level1">We won't go into much detail for the 'alsa-tools' package. It consists of a number of command line and GUI utilities which are very sound card specific. Perhaps the most important of these are the GUI mixers for a number of professional grade sound cards. These include cards from Echo Digital Audio, RME (the Hammerfall cards) and Envy24 based cards (e.g. some cards from MAudio, Terratec). In Ubuntu Studio, you will find these mixers in the Applications menu.</li>
+</ul>
+<p class="line"></p>
+<h2>6. ALSA  Firmware</h2>
+<ul class="level1">
+	<li class="level1">A number of sound cards need firmware loaded to work properly. Because of licensing issues the firmware package is not included in the standard ubuntu repositories. But you can always get them from the Medibuntu repositories. This package will also install a number of Udev rules, which will make sure the appropriate firmware gets loaded for your card.</li>
+</ul>
+<p class="line"></p>
+<h2>7. ALSA Plugins</h2>
+<ul class="level1">
+	<li class="level1">ALSA provides a number of additional plugins in this package. These include a plugin for JACK, and a plugin for PulseAudio. JACK and PulseAudio are sound servers, and we will discuss them later in detail. These plugins allow applications that depend on ALSA for sound, to be redirected to JACK or PulseAudio. In this way, applications that are normally not capable of using JACK or PulseAudio, will be able to connect to the sound server. To make use of these plugins, you can define new PCM devices which make use of these plugins. You can do so in one of the ALSA configuration files: .asoundrc or asound.conf . For PulseAudio, you would add something like this:
+		<div class="asoundconf">
+			pcm.pulse {
+			<br>&nbsp;&nbsp;type pulse
+			<br>} 
+			<br>ctl.pulse { 
+			<br>&nbsp;&nbsp;&nbsp;&nbsp;type pulse
+			<br>} 
+		</div>
+		<span>1.And for JACK:</span>
+		<div class="asoundconf">
+			pcm.jack {
+			<br>&nbsp;&nbsp;type jack
+			<br>&nbsp;&nbsp;playback_ports {
+			<br>&nbsp;&nbsp;&nbsp;0 system:playback_1
+			<br>&nbsp;&nbsp;&nbsp;1 system:playback_2
+			<br>&nbsp;&nbsp;}
+			<br>&nbsp;&nbsp;capture_ports {
+			<br>&nbsp;&nbsp;&nbsp;0 system:capture_1
+			<br>&nbsp;&nbsp;&nbsp;1 system:capture_2
+			<br>&nbsp;&nbsp;}
+			<br>} 
+		</div>
+		<span>Now you are ready to use these PCM devices for playback. You could for example use the command 'aplay -D jack example.wav', and aplay would be automatically connected to the JACK server. And 'aplay -D pulse example.wav' would connect to PulseAudio when it is running. To make JACK or PulseAudio the default PCM for applications that use ALSA, you can add this (substitute "jack" for "pulse" if you want to use PulseAudio):</span>
+		<div class="asoundconf">
+			pcm.!default {
+			<br>&nbsp;&nbsp;type plug
+			<br>&nbsp;&nbsp;slave { pcm "jack" }
+			<br>} 
+		</div>
+	</li>
+	<li class="level1">At the time of writing, the JACK plugin is not included in the alsa plugins package (libasound2-plugins) that is included in the ubuntu repository. The reason for this is that JACK is still not included in the 'main' repository. So we will have to compile the plugin ourselves. We can download the alsa-plugins tarball from one of the alsa mirrors. We will make sure the version of the package is the same as the one we have installed: alsa-plugins-1.0.15.tar.bz2 . Now we can extract the tarball with <span class="command">tar xf alsa-pugins-1.0.15.tar.bz2</span> and cd into the directory with <span class="command">cd alsa-plugins-1.0.15/</span>. Now we can try to run <span class="command">./configure</span> . When we get the error "No package 'alsa' found", this could mean that the alsa library is not installed on our system, or that that development package of that library is missing. In Synaptic we search for "alsa library" in the name and description metadata. Because library packages will usually have a name that starts with "lib", we can easily find out that the package we are looking for is called "libasound2". We can see that it is installed, but that "libasound2-dev" is not. We install this package, and try running ./configure again. When the configure script succeeds, it shows us a list of the plugins that will be built. If you see "JACK plugin: no" , this means that the JACK plugin won't be built. The reason for this is that the JACK library (or it's development package) was not found. We go back to synaptic, locate the JACK library (libjack0.100.0), and install the development package. We run configure again, and see that the JACK plugin will be built this time. Now we issue <span class="command">make</span> , and the plugins are built. We only need the JACK plugin from this package. We can copy the plugin to the right directory with this command: <span class="command">sudo cp jack/.libs/libasound_module_pcm_jack.so /usr/lib/alsa-lib/</span>.</li>
+</ul>
+<h2>8. ALSA OSS support</h2>
+<ul class="level1">
+	<li class="level1">ALSA provides support for programs that use the older OSS system. There are two ways in which ALSA can do this. The first way is by using the ALSA OSS compatibility modules. These will be loaded by default in Ubuntu Studio (see '/etc/modprobe.d/alsa-base'). Their names are:  snd-pcm-oss, snd-mixer-oss, and snd-seq-oss. Programs that use OSS make use of device files called "/dev/dsp", "/dev/mixer" and "/dev/audio". When the modules are loaded, these devices will appear on your system. The second way ALSA provides OSS support, is by using a so called wrapper library, which is called libaoss. You can use the <span class="command">aoss</span> command to start up your OSS program. This will make the program use the default ALSA devices, located in "/dev/snd". In addition, the program will be able to make use of the ALSA PCM plugins (this is not possible when you use the kernel modules).</li>
+</ul>
+<dl class="ftn">
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn1" id="ftn1">[1]</a></dt>
+	<dd class="ftn">If you have multiple cards, you have to specify the index for all your cards. Otherwise, this might not work as expected.</dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn2" id="ftn2">[2]</a></dt>
+	<dd class="ftn">These are not the same plugins as in the alsa-plugins package.</dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn3" id="ftn3">[3]</a></dt>
+	<dd class="ftn">In this case, it is the so-called "slave" of the plug plugin</dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn4" id="ftn4">[4]</a></dt>
+	<dd class="ftn">Sometimes a 'channel' will be there to indicate a switch (f.e. to boost the mic level with 20dB). In this case you can mute/unmute it to turn it on or off.</dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn5" id="ftn5">[5]</a></dt>
+	<dd class="ftn">Actually, aplaymidi can receive more than one midi file as arguments, which it will play in sequence.</dd>
+</dl>
+</div>
+</body>
+</html>
