@@ -1,9 +1,9 @@
 /*colors: grijsblauw:#373749*/ 
 
 body {
-	font-family: courier , fixed, monospace;
-	font-size:15px;
-	color: #FFFFFF;
+	font-family: courier new, fixed, monospace;
+	font-size:62.5%;
+	color: #FFFFFF; 
 	background-color: #2A3749;
 	text-align: left;
 }
@@ -16,33 +16,32 @@ a:link {
 
 
 a:visited {
-	text-decoration: underline;
 	color: #FFFFFF;
 }
 
+a:hover {
+	text-decoration:none;
+}
 
-#wrapper {
+
+#license-image {
 	position: absolute;
-	bottom: 0em;
-	height: 100%;
-	width: 100%;
+	bottom: 16px;
+}
+
+#license-text {
+	position: absolute;
+	bottom: 20px;
+	margin-left:99px;
 }
 
 div.page {
-	margin-left:50px;
-	margin-right:100px;
-	/*border: 1px solid #000;*/
-	padding:0; 
+	margin-left:1.5em;
+	margin-right:7em;
+	padding:0;
+	font-size:1.5em; 
 }
 
-#license {
-	position: absolute;	/*to centre an element with an absolute position*/
-	bottom: 0.5em;			/*you have to set left,right position to same value*/
-	left: 0em;
-	right: 0em;
-	margin-left: auto;
-	margin-right: auto;
-}
 
 h1 {
 	font-size:1.6em;
@@ -52,6 +51,7 @@ h1 {
 h2 {
 	font-size:1.3em;
 	margin-top:3em;
+	margin-left:0.5em;
 }
 
 ul {
@@ -62,137 +62,79 @@ ul {
 }
 
 li {
-	padding-left:0.5em;
+	padding-left:0;
 	/*border: 1px solid #000;*/
 }
 
 ul.level1 {
+	list-style-type:disc;
 	margin-top: 2.7em;
-	margin-left:1.9em;
+	margin-left:3em;
 }
 
-li.level1 {
-	/*border: 1px solid #000;*/
+li.level1 { 
+	padding-left:0.5em;
 	margin-bottom:1em;
 }
 
 ul.level2 {
-	margin-top: 0.5em;
+	list-style-type:none;
+	list-style-image: url(dash.gif);
+	margin-top: 0.6em;
 	margin-left:2em;
 }
 
 li.level2 {
 	margin-bottom:0.5em;
+	padding-left:0.2em;
 }
 
-.footnotes {
-	margin-top:3em;
+dl.ftn {
+	font-size:0.8em;
+	margin-top:5em; 
 }
+
+dt.ftn {
+	display:inline;
+	float:left;
+	clear:left;
+}
+
+dd.ftn {
+	
+}
+
 
 a.ftnsymbol {
-	font-size:0.8em;
-	vertical-align:top;
+	/*vertical-align:top;*/
 	text-decoration:none;
 }
 
+p.line {
+	border-bottom: 1px ridge #ffffff;
+	margin-left:3.4em;
+	margin-top:2em;
+}
 
-p.ftn {
-margin:0;
-font-size:0.9em
+span.command {
+	font-weight:bold;
+}
+
+div.asoundconf {
+	margin:2em;
+	width:15em;
+	border: 1px solid #ffffff;
+	padding:0.5em;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-p.numbered_title {
-	margin-left:0;
-	margin-right:0;
-	margin-top:0;
-	margin-bottom:0;
-	border:none;
-	padding:0;
-	text-indent:0;
-	text-align:left;
-	font-weight:normal;
-	font-size:21.333334px;
-	text-decoration:none}
-
-span.Footnoteanchor {font-size:58%;vertical-align:super}
-span.FootnoteSymbol {}
-p.Footnote {
-	margin-left:18.864px;
-	margin-right:0;
-	margin-top:0;
-	margin-bottom:0;
-	border:none;
-	padding:0;
-	text-indent:-18.864px;
-	font-size:13.333334px}
-
-p.shellcommands {
-	margin-left:0;
-	margin-right:0;
-	margin-top:0;
-	margin-bottom:0;
-	border:none;
-	padding:0;
-	background-color:transparent;
-	font-weight:normal;
-	font-size:16.0px}
-p.Standard {
-	margin-left:0;
-	margin-right:0;
-	margin-top:0;
-	margin-bottom:0;
-	border:none;
-	padding:0;
-	font-size:16.0px}
-p.cursusparagraph {
-	margin-left:0;
-	margin-right:0;
-	margin-top:0;
-	margin-bottom:0;
-	border:none;
-	padding:0;
-	font-size:16.0px}
-.listlevel1cursus {
-	margin-top:0;
-	margin-bottom:0;
-	list-style-type:decimal;
-	clear:left}
-.listlevel2cursus {
-	margin-top:0;
-	margin-bottom:0;
-	list-style-type:bullet;
-	clear:left}
-.listlevel3cursus {
-	margin-top:0;
-	margin-bottom:0;
-	list-style-type:square;
-	clear:left}
-.listlevel4cursus {
-	margin-top:0;
-	margin-bottom:0;
-	list-style-type:disc;
-	clear:left}
+/*
+#license {
+	position: absolute;	/*to centre an element with an absolute position*/
+	bottom: 0.5em;			/*you have to set left,right position to same value*/
+	left: 0em;
+	right: 0em;
+	margin-left: auto;
+	margin-right: auto;
+	
+} */  

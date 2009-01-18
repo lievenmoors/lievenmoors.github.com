@@ -4,7 +4,7 @@
 <title>page1</title>
 <meta name="generator" content="Bluefish 1.0.7">
 <meta name="author" content="lieven moors">
-<meta name="date" content="2009-01-17T00:17:27+0100">
+<meta name="date" content="2009-01-18T13:43:33+0100">
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -29,6 +29,7 @@
 	<li class="level1">There are more than 300 Linux distributions today. A few of the important ones are: Debian, Red Hat, SUSE, Mandrake and Ubuntu (which is based on Debian).</li>
 	<li class="level1">We will be using Ubuntu Studio, which is a variant of Ubuntu, specifically tailored for audio, video and graphics creation.</li>
 </ul> 
+<p class="line"></p>
 <h2>2. Basic system layout</h2>
 <ul class="level1">
 	<li class="level1">The GNU/Linux system is a modular system in many ways:
@@ -43,19 +44,143 @@
 	<li class="level1">The X Window System provides the standard toolkit and protocol for graphical user interfaces (GUI). A number of GUI toolkits have been build on top of X. The most important are GTK+ (the GIMP toolkit) and Qt (pronounced 'cute'). A lot of Linux programs use of one of these toolkits.</li>
 	<li class="level1">A lot of Linux distributions also provide a complete desktop environment. A desktop environment usually consists of a window manager, a file manager, and programs and libraries for managing the desktop. The two most popular desktop environments are GNOME and KDE (K Desktop Environment). GNOME uses the GTK+ toolkit, and KDE uses Qt. GNOME and KDE also serve as an umbrella for a number of smaller projects (KDE programs often have names that start with the capital K).</li>
 	<li class="level1">A GNU/Linux system is able to run without the use of GUI programs (and even without X). The system provides a command line interface (CLI), from which the user can run command line programs. This kind of interface to the operating system is called a shell. The most common shell on Linux systems today is called the BASH shell. Most shells can also interpret scripts. These are simple unformatted text files in which a sequence of commands can be saved.</li>
-</ul> 
+</ul>
+<p class="line"></p>
 <h2>3. Working in the shell</h2>
 <ul class="level1">
 	<li class="level1">There are two ways to get access to a Bash shell. The simplest way is to open a terminal emulator from within the graphical environment. (on Ubuntu: applications, accessories, terminal). The other way is to switch to one of the so called virtual terminals. To do this, you type the key combination Ctrl+Alt+F1. This will get you out of the X window system, to the first virtual terminal. There are five more virtual terminals located at Ctrl+Alt+(F2-F6). Ctrl+Alt+F7 will get you back to X <a href="#ftn1" class="ftnsymbol" id="bodyftn1">[1]</a>. You will have to login before you can use the virtual terminal (give your username and password).</li>
 	<li class="level1">A command can be entered by typing the name of the command at the Bash prompt, when you press 'Enter' the command will be executed (if the shell thinks it is valid). Commands can have options. These options can change the default behaviour of the program. Options can consist of a single letter or digit, preceded by a dash (e.g. "-o"). But often you can choose between short and long options. A long option is mostly preceded by two dashes (e.g. "--option"). Short options can be combined, with one dash ("-Xyz"). The shell uses whitespace (space, tab, newline) to distinguish between command, options and other arguments, just as we split sentences in words. So you should always separate commands and arguments at least with one space. Besides options, commands can take any number of other arguments (e.g. a filename) <a href="#ftn2" class="ftnsymbol" id="bodyftn2">[2]</a>. You can look up all the options and arguments a command can take in the manual file of that command.</li>
 	<li class="level1">An important concept when working with a Linux System is the pathname. A pathname describes the location of a file or directory within the system. A pathname can be absolute, or relative. An absolute pathname describes the position of a file relative to the system root directory. The system root directory is represented by a simple slash (/). After the root slash, any number of subdirectories can be given, separated from each other with more slashes (e.g. /home/lieven/my_directory, /home/lieven/my_directory/my_file). You can recognize an absolute pathname, because it always starts with a slash. A relative pathname describes the location of a file or directory relative to your current working directory. The current working directory of your shell can be changed <a href="#ftn3" class="ftnsymbol" id="bodyftn3">[3]</a>. So a relative pathname can mean different things to the system, depending on your position in the directory tree. A relative pathname never starts with a slash (e.g. my_dir/my_file), and the shell expands the pathname automatically into an absolute pathname (into e.g. /home/lieven/my_dir/my_file). When you open a new terminal, your current working directory will probably be your own home directory (/home/your_user_name). Every directory on a Linux system also contains two special directories: "." and ".." (dot, dot dot). They can be used in absolute, or relative pathnames <a href="#ftn4" class="ftnsymbol" id="bodyftn4">[4]</a>. One dot refers to the directory in which it is contained, two dots refer to the parent directory of that directory.</li>
 </ul>
-<div class="footnotes">
-<a class="ftnsymbol" href="#bodyftn1" id="ftn1">[1]</a><p class="ftn"> Once you're out of X, you can just type Alt+(F1-F7)</p>
-<a class="ftnsymbol" href="#bodyftn2" id="ftn2">[2]</a><p class="ftn"> Sometimes options can take arguments themselves (e.g. in 'tar -xvf archive.tar', archive.tar is an argument to the -f option)</p>
-<a class="ftnsymbol" href="#bodyftn3" id="ftn3">[3]</a><p class="ftn"> The current working directory is associated with a process, in this case the Bash shell.</p>
-<a class="ftnsymbol" href="#bodyftn4" id="ftn4">[4]</a><p class="ftn"> They are actually links.</p>
-</div>
+<p class="line"></p>
+<h2>4. Basic shell commands</h2>
+<ul class="level1">
+	<li class="level1"><span class="command">pwd</span>  "print working directory"
+		<ul class="level2">
+			<li class="level2">This command prints your current working directory, your location in the filesystem tree</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">cd</span>  "change directory"
+		<ul class="level2">
+			<li class="level2">This command changes your current working directory. It takes a pathname as an argument, and this will become your new working directory.</li>
+			<li class="level2">If used without any arguments, it will change your working directory to your home directory.</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">ls</span>  "list directory contents"
+		<ul class="level2">
+			<li class="level2">Shows the content of the directory given as an argument. Without argument, it shows the  content of the current working directory.</li>
+			<li class="level2">Important options are: "-l" , "-a", and "-d". The "-l" option shows all the details of the files (such as permissions, size...) as well. The "-a" option makes ls show hidden files as well. Hidden files are files that have a filename starting with a dot (e.g. "/home/lieven/.hidden_file"). The "-d" option shows the directory itself instead of it's contents. It can be used together with the "-l" option to show detailed information about the directory (e.g. ls -ld /home/lieven).</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">less</span>  "shows the content of a text file"
+		<ul class="level2">
+			<li class="level2">Less takes a filename as an argument, and shows the content of the file. This kind of program is also called a pager, because it lets you scroll through the document page by page. When you've started less, you can press "f" to scroll one page forward, and "b" to scroll backwards <a href="#ftn5" class="ftnsymbol" id="bodyftn5">[5]</a>. Less cannot be used to edit files. But if you press "v", it will open a default text editor for you (on Ubuntu Studio this will be "nano"). You can also use the up and down arrows to scroll line by line. If you want to find a word, you can type "/" and give the word you're looking for. You can repeat the search with "n", and repeat it backwards with "N". To exit less, just type "q".</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">man</span>  "shows the man page of a command"
+		<ul class="level2">
+			<li class="level2">Man will use the default pager (probably "less") to show the man page of the command  given as an argument (e.g. man man).</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">cp</span>  "copy files and directories"
+		<ul class="level2">
+			<li class="level2">You can use 'cp' in different ways. First, you can give 'cp' two arguments. The first will be the source file, the second the destination file. If the destination file does not exist, this file will be made as a copy of the source file. If the destination file exists, 'cp' will overwrite the destination file with a copy of the source file (e.g. 'cp file1 dir/file2'). The second way you can use 'cp' is to specify a number of source files, and as the last argument a directory in which to copy these files (e.g. 'cp file1 file2 file3 /home/lieven'). If you want to copy a directory with its contents, you have to use the "-r" (recursive) option (e.g. 'cp -r /home/lieven/my_dir /usr/local/').</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">mv</span>  "move (rename) files"
+		<ul class="level2">
+			<li class="level2">'mv' is used in a similar way as 'cp'. If you give it two files as arguments, it will move the source file to the destination file. If you don't change the location of the file as well (by giving it a different pathname, this has the efect of renaming the file (e.g. 'mv file1 file2'). As with copy, you can also give a number of source files as arguments, and a final argument which has to be a directory. 'mv' will then move all the files to that directory (e.g. 'mv file1 file2 /home/lieven/').</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">rm</span>  "remove files or directories"
+		<ul class="level2">
+			<li class="level2">'rm' will remove (delete) all the files you specify as arguments. You can also specify directories, but then you have to use the "-r" option (e.g. rm -r file1 dir1).</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">mkdir</span>  "make directories"
+		<ul class="level2">
+			<li class="level2">You can give 'mkdir' a pathname of a directory you want to create. By default 'mkdir' will only make one new directory. With the "-p" option (parents), mkdir will make as many directories as needed to fulfil the whole pathname. For example: 'mkdir /home/lieven/dir1/dir2' would fail, if the dir1 directory does not already exist. But 'mkdir -p /home/lieven/dir1/dir2' will make two new directories, dir1 and dir2.</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">nano</span>  "very lightweight text editor"
+		<ul class="level2">
+			<li class="level2">Basic commands are explained at the bottom of the screen. You can use Ctrl+v to scroll a page forwards, and Ctrl+y to scroll backwards. Use Ctrl+k to delete a line, and Ctrl+u to paste it again. If you want to delete a specific area of text, you can set a mark with Alt+a, customize you selection with the arrows, and press Ctrl+k and Ctrl+u to cut and paste it. If you want to exit a file, press Ctrl+x, and answer the question whether to save the file with "y" or "n".</li>
+			<li class="level2">There are more advanced text editors available on the Linux system. The most important are Vim (vi improved), and Emacs. It is not easy to get started with these programs, but they have a lot of functionality.</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">pgrep</span>  "lets you find the identification number of a process (the process id, or 'pid')"
+		<ul class="level2">
+			<li class="level2">Every process has a number associated with it. If you know that number, you can send that process (program) certain signals. This command takes a name or partial name as an argument. It returns the number(s) of all processes which have this (partial) name. Use the "-l" option to see the names of the processes as well as the numbers.</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">kill</span>  "lets you send signals to a program"
+		<ul class="level2">
+			<li class="level2">This program takes a process id as an argument. Without any options kill sends the process the TERM signal. This means that the process should terminate. TERM will not always be able to stop the process. If you use the option "-9", kill will send the process the KILL signal. This signal cannot be blocked, so it will probably end your program. Use kill -9 only when necessary, because the process will not be able to clean up after itself. On rare occasions you will not be able to "kill" your process; it will be in so called "uninterruptible sleep".</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">locate</span>  "lets you find a file or directory by name"
+		<ul class="level2">
+			<li class="level2">locate is usually the quickest way to find a file in the directory tree. It makes use of its own database, which is updated daily <a href="#ftn6" class="ftnsymbol" id="bodyftn6">[6]</a> with the command <span class="command">updatedb</span>. You can update de database yourself by executing this command (no arguments necessary). Locate takes a name or partial name as an argument, and returns all pathnames that contain this (partial) name.</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">sudo</span>  "execute a command as an other user"
+		<ul class="level2">
+			<li class="level2">Without options, sudo will execute the command given as an argument, as the root user. The root user is a user with special rights on the Linux system. Root has the permission to do anything on the system. Sudo has its own configuration file (/etc/sudoers), that determines what users are able to use the sudo command. Sudo will ask you for your password before executing a command. (example:  sudo less /etc/sudoers)</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">chown</span>  "change the file owner and group"
+		<ul class="level2">
+			<li class="level2">Every file (or directory) has a system user and group associated with it. With this command you can change the owner and/or group of a file. If you want to change the owner, you can specify the new owner as an argument to the command (e.g. chmod elton /home/lieven/file). If you want to change the owner and group, you can specify the new owner and group, separated by a colon, as an argument to the command (e.g. chmod elton:audio /home/lieven/file). To change only the group, you use a colon, followed by the group name as an argument (e.g. chmod :audio /home/lieven/file).</li>
+		</ul>
+	</li>
+	<li class="level1"><span class="command">chmod</span>  "change the permissions (mode bits) associated with a file"
+		<ul class="level2">
+			<li class="level2">Every file has three sets of permissions, one for the user associated with the file, one for the group associated with the file, and one for all the other users. There are three kinds of permissions which can be granted: read (r), write (w) and execute (x). When used with a normal file, they mean: read the contents of a file, write (or overwrite) the contents of a file, execute the file as a program. When used with a directory, they mean: be able to see the content of a directory (e.g. with 'ls'), be able to change the content of a directory (to create, or remove a file in the directory), be able to access the files in the directory.</li>
+			<li class="level2">The first argument (after possible options) to this command can be a list separated by comma's in which you add (+), remove (-) or set (=) the permissions for the user (u), group (g) or others (o). For example: chmod u+r,g-rw,o=rwx /home/lieven/file. This means: add read permissions for the file's owner (user), remove read and write permissions for the file's group, set the permissions for all the other users to read, write and execute.</li>
+		</ul>
+	</li>
+</ul>
+<p class="line"></p>
+<h2>5. Installing programs with APT</h2>
+<ul class="level1">
+	<li class="level1">To install programs, most Linux distributions make use of a package manager. A package manager takes care of installing and uninstalling programs or libraries on the Linux system. The two most used package manager systems on Linux are APT (Advanced Packaging Tool) and RPM (Red Hat Package Manager). We will be using APT, as it is the default package manager on Debian based systems. APT provides a number of command line programs, which in turn are used by a number of GUI programs. The most popular graphical user interface to the APT system today is a program called "Synaptic".  We will use it as the main tool to install packages in this course.</li>
+	<li class="level1">A Linux distribution is not a static system. Developers all over the world are continually working to make these systems better. These updates can be very small (e.g. bug fixes, security updates), but they can also change the system in more fundamental ways. To organize all these changes to the system, most distributions release a stable version of their system after a certain amount of time (every six months for Ubuntu). These releases can be marked by numbers (e.g. Fedora 9) or names (f.e Ubuntu Hardy Heron). After this, only minor changes to the system are allowed.</li>
+	<li class="level1">The APT system can download and install software from a number of predefined repositories. Repositories are software archives which are accessible via the internet. APT has a configuration file ( /etc/apt/sources.list ) which determines what repositories APT can use. This file can be edited with a text editor, so you can add or remove repositories to the APT system <a href="#ftn7" class="ftnsymbol" id="bodyftn7">[7]</a>. But you can also edit this file with a graphical user interface which is accessible from the Synaptic menu. The Ubuntu software repository is organized into four components: main (officially supported software), restricted (supported software that is not available under a completely free license), universe (community-maintained software, i.e. not officially supported), multiverse (software restricted by copyright or legal issues, not supported). The main and universe components are enabled by default on Ubuntu. If you want to add a new repository yourself, you should always make sure that it is meant for your specific release (in our case this is 'hardy').</li>
+	<li class="level1">You can find Synaptic in menu at System -> Administration -> Synaptic Package Manager. You will have to give your password to get access to the program. Now, you will see a list of all the packages that can be installed from the repositories. You can use the search button to search for a particular package. Every package also carries information about itself (meta data), e.g. its name, a short description, its dependencies (which other packages are needed for it to work), its version, etc. In the Find dialogue, you can enter a number of words, and in what metadata you want to search for those words. If you have found the package, you can right-click it, and select 'Mark for Installation' from the pop-up menu. In the S (status) column of the package, you will see a small square which will now be marked with a little arrow. If the package depends on other packages which are not yet installed, Synaptic will show you the names of these packages, and ask you if you want to mark these as well. You can choose to mark them, or you can cancel the whole operation. You can go on, and mark as many packages as you want. When you are ready, you press the 'Apply' button. Now Synaptic will show you all the changes you have asked for, and you have one last chance to cancel the installation. When you press apply again, Synaptic will download and install the packages automatically. The little square in the status column will be marked green when the package is installed. To remove a package, right-click on an installed package, and click 'Mark for Removal' or 'Mark for Complete Removal'. The difference is that 'Complete Removal' will remove the configuration files of that package as well (If you plan to reinstall a package, it can be handy to keep your customized configuration files on the system). When you are done with marking the packages, you apply the changes as described above. When packages have been updated to a newer version in a repository, the packages will be automatically marked as 'upgradable'. The little square in the status column will show a little star inside. You can always press the 'Mark All Upgrades' button, and then 'Apply' to install all upgradable packages. Or you can right-click and select 'Mark for Upgrade' to only upgrade the packages you want <a href="#ftn8" class="ftnsymbol" id="bodyftn8">[8]</a>.</li>
+	<li class="level1">Packages kan also be downloaded and installed individually. Debian packages always have the .deb extension. When you have downloaded the package you can just double click on it. Ubuntu will open the GDebi Package Installer which makes installing the package very easy. You should always make sure the package is suitable for your system. Because Debian and Ubuntu share the same base system, you will often be able to install a package made for debian on an Ubuntu system, or the other way round. But this will not always work, and it is better to avoid mixing packages from different systems. You will almost always find the same package for your specific version of Ubuntu. Because GDebi uses the APT system as well, your package will be recognized as any other package on your system <a href="#ftn9" class="ftnsymbol" id="bodyftn9">[9]</a>.</li>
+</ul>
+<p class="line"></p>
+<h2>6. Installing packages from source</h2>
+<ul class="level1">
+	<li class="level1">A lot of programs and libraries for Linux are written in C or C++. Initially the program consists of text files which can be read and edited with a text editor. In a second step these files can be compiled with a compiler. On linux this will probably be the GNU C compiler (gcc or g++). The compiler will transform the text files into binary code, which can be executed on your system (You could say that the human language is converted into computer language). When everything is compiled and ready, the different pieces of the program or library can be installed on your system.</li>
+	<li class="level1">Source packages are often distributed in the form of a tar archive. A tar archive is actually a collection of files that are stored as one file with the .tar extension. The archive can be created or extracted with the <span class="command">tar</span> utility. The name "tar" is derived from "tape archive" as tar was historically used to make backups to tape drives. A tar archive does not use file compression techniques to make the file smaller. That's why tar archives are usually compressed with the standard linux compression tools: gzip (extension .gz) and bzip2 (extension .bz2). As a result, source packages often have two extensions (e.g. archive.tar.gz), and they are often called tarballs. Modern versions of tar will uncompress the tarball automatically for you. The typical command to uncompress and extract a tarball is: 'tar -xvf archive.tar.gz' . The "-x" option tells tar to extract, "-v" tells tar to be verbose (show the files that are extracted), "-f" tells tar that it has to extract from a file.</li>
+	<li class="level1">When you have extracted the tarball, a new directory will be made, with the contents of the archive. Now we can start building the program. First you would normally 'cd' into the directory, and read the README and INSTALL files. These files often contain information about the dependencies of the program, instructions to build or install the program, etc. We can install the needed dependencies with Synaptic. But we have to make sure that for every dependency, we have the corresponding development package installed as well. These packages have the same name as the original package, but with the "-dev" postfix. They are only necessary when you want to compile programs from source. The first command we have to give is <span class="command">./configure</span>. This script is provided by the source package, and it checks what building tools we use on our system, if the necessary dependencies are installed, and a lot more. It is very likely that it will return an error because something is missing on your system. Just have a look at the error, and install the necessary package. You have to repeat this process until the './configure' command succeeds <a href="#ftn10" class="ftnsymbol" id="bodyftn10">[10]</a>. Now we can type <span class="command">make</span> in the terminal. The 'make' command will build everything needed for the package. This might take a while, depending on how large the program is. Now we are ready to install the necessary components on our system. Source packages should install their files in the '/usr/local/' hierarchy by default. You will need root privileges to do the installation. To install, we type <span class="command">sudo make install</span> in the terminal. The executables will now be installed in the '/usr/local/bin' directory, and you can now use them as any other command.
+</li>
+	<li class="level1">One of the difficulties with installed source packages, is that it is not so easy to uninstall them. Sometimes you will be able to issue <span class="command">sudo make uninstall</span> from within the source package directory. But this will not always be the case. And once the files are installed in the '/usr/local' hierarchy, it is very hard to know which files belongs to which package. That is why I would like to introduce you to the 'Stow' system. The idea is that we install every package we build from source into it's own subdirectory in the '/usr/local/stow' directory. When this is done, we can use the <span class="command">stow</span> command to make links in the '/usr/local' hierarchy for every file in that subdirectory. Now our system will recognize the programs and libraries we installed. When we want to delete a package, we can use 'stow' again to delete all the links for that package in the '/usr/local' hierarchy. And we can start from a clean slate again. Stow makes it also very easy to have multiple versions of a package installed. You can install them next to each other in the '/usr/local/stow' directory. The system won't know about them until you make the necessary links with stow. To use a newer version of a program, you delete the links to the older version, and make new ones to the new version. Completely deleting a package from you system is very simple as well. Just delete the links with the 'stow' command, and remove the directory of that program.</li>
+	<li class="level1">I will now give you an example of installing a source package with the help of stow (You have to install the stow package with synaptic first). Lets say that we want to install a package named package-1.2 .We compile the package first with the <span class="command">./configure</span> and <span class="command">make</span> commands (it doesn't matter from where). Then we install the package in its own directory in the stow directory with: <span class="command">sudo make install prefix=/usr/local/stow/package-1.2</span>. Now we have to cd into the stow directory (/usr/local/stow), and let stow create the necessary links with this command: <span class="command">stow package-1.2</span>. To delete the links to your package again type <span class="command">stow -D package-1.2</span> from the '/usr/local/stow' directory.</li>
+</ul>
+<dl class="ftn">
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn1" id="ftn1">[1]</a></dt>
+	<dd class="ftn">Once you're out of X, you can just type Alt+(F1-F7)</dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn2" id="ftn2">[2]</a></dt>
+	<dd class="ftn">Sometimes options can take arguments themselves (e.g. in 'tar -xvf archive.tar', archive.tar is an argument to the -f option)</dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn3" id="ftn3">[3]</a></dt>
+	<dd class="ftn">The current working directory is associated with a process, in this case the Bash shell.</dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn4" id="ftn4">[4]</a></dt>
+	<dd class="ftn">They are actually links.</dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn5" id="ftn5">[5]</a></dt>
+	<dd class="ftn">"space" is also commonly used to scroll one page forward</dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn6" id="ftn6">[6]</a></dt>
+	<dd class="ftn">This is usually done by default with the <span class="command">cron</span> command.</dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn7" id="ftn7">[7]</a></dt>
+	<dd class="ftn">You can also add your own .list files in the /etc/apt/sources.list.d directory.</dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn8" id="ftn8">[8]</a></dt>
+	<dd class="ftn">On Ubuntu, there is also an 'update manager', which will remind you periodically if there are updates available for your packages. This makes it even more easy to upgrade your packages.</dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn9" id="ftn9">[9]</a></dt>
+	<dd class="ftn">Alternatively, you can use Synaptic to install a downloaded package. In the menu, you will find: File -> Add downloaded packages.</dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn10" id="ftn10">[10]</a></dt>
+	<dd class="ftn">If we issue a command in bash, we normally don't have to give the absolute or relative pathname to that command. Bash will automatically look for the command in the 'bin' directories on our system (see PATH variable). In this case we want to execute a script located in the current directory (not a bin directory). That's why we have to specify the full pathname: './configure'.</dd>
+</dl>
 </div>
 </body>
 </html>
