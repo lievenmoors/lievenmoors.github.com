@@ -4,7 +4,7 @@
 <title>page2</title>
 <meta name="generator" content="Bluefish 1.0.7">
 <meta name="author" content="lieven moors">
-<meta name="date" content="2009-01-18T13:25:19+0100">
+<meta name="date" content="2009-02-02T18:09:53+0100">
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -89,7 +89,7 @@
 	</li>
 	<li class="level1"><span class="command">asoundconf</span>
 		<ul class="level2">
-			<li class="level2">This command can be used to configure the alsa library. The ALSA library has two configuration files which it will always read if they exist. The first one is '/etc/asound.conf' which can be used to change the settings for ALSA system wide. The second one is called .asoundrc (a hidden file), and every user can have have one in it's own home directory. This scheme of having system wide configuration files in the '/etc' directory, and user specific configuration files as hidden files in the users home directory, is the standard way on Linux systems to configure programs. ALSA doesn't need these files to function properly, and they will probably not be present on your system. What you can put in these files is an advanced topic, and we will see a few examples later. Now back to asoundconf... Asoundconf allows you to change the ALSA lib settings as well. It will make a third file called '.asoundrc.asoundconf' in you home directory, and it will put an inclusion statement in your .asoundrc file, which makes sure that '.asoundrc.asoundconf' is also used for your ALSA configuration. If you didn't have an .asoundrc file, asoundconf will make a fresh one for you. You should never edit the '.asoundrc.asoundconf' file by hand. If you decide you don't want to use this extra configuration file any more, you just have to remove the inclusion statement (</home/lieven/.asoundrc.asoundconf>) from your .asoundrc file. I will give you a few examples of how you can use asoundconf: </b>'<span class="command">asoundconf list</span>' : this will show you the names of your available sound cards.</b>'<span class="command">asoundconf set-default-card name_of_card</span>' : this will set your default card.</b>'<span class="command">asoundconf reset-default-card</span>': sets default card back to normal.</li>
+			<li class="level2">This command can be used to configure the alsa library. The ALSA library has two configuration files which it will always read if they exist. The first one is '/etc/asound.conf' which can be used to change the settings for ALSA system wide. The second one is called .asoundrc (a hidden file), and every user can have have one in it's own home directory. This scheme of having system wide configuration files in the '/etc' directory, and user specific configuration files as hidden files in the users home directory, is the standard way on Linux systems to configure programs. ALSA doesn't need these files to function properly, and they will probably not be present on your system. What you can put in these files is an advanced topic, and we will see a few examples later. Now back to asoundconf... Asoundconf allows you to change the ALSA lib settings as well. It will make a third file called '.asoundrc.asoundconf' in your home directory, and it will put an inclusion statement in your .asoundrc file, which makes sure that '.asoundrc.asoundconf' is also used for your ALSA configuration. If you didn't have an .asoundrc file, asoundconf will make a fresh one for you. You should never edit the '.asoundrc.asoundconf' file by hand. If you decide you don't want to use this extra configuration file any more, you just have to remove the inclusion statement (</home/lieven/.asoundrc.asoundconf>) from your .asoundrc file. I will give you a few examples of how you can use asoundconf: </b>'<span class="command">asoundconf list</span>' : this will show you the names of your available sound cards.</b>'<span class="command">asoundconf set-default-card name_of_card</span>' : this will set your default card.</b>'<span class="command">asoundconf reset-default-card</span>': sets default card back to normal.</li>
 		</ul>
 	</li>
 	<li class="level1">Other Utilities we didn't mention are: <span class="command">amixer</span> (control the mixer from the command line), <span class="command">amidi</span> (read from and write to ALSA RawMIDI ports), <span class="command">aseqnet</span> (to use ALSA sequencer over the network), <span class="command">aseqdump</span> (show the events received at an ALSA sequencer port).</li>
@@ -108,7 +108,7 @@
 <h2>7. ALSA Plugins</h2>
 <ul class="level1">
 	<li class="level1">ALSA provides a number of additional plugins in this package. These include a plugin for JACK, and a plugin for PulseAudio. JACK and PulseAudio are sound servers, and we will discuss them later in detail. These plugins allow applications that depend on ALSA for sound, to be redirected to JACK or PulseAudio. In this way, applications that are normally not capable of using JACK or PulseAudio, will be able to connect to the sound server. To make use of these plugins, you can define new PCM devices which make use of these plugins. You can do so in one of the ALSA configuration files: .asoundrc or asound.conf . For PulseAudio, you would add something like this:
-		<div class="asoundconf">
+		<div class="box asoundconf">
 			pcm.pulse {
 			<br>&nbsp;&nbsp;type pulse
 			<br>} 
@@ -117,7 +117,7 @@
 			<br>} 
 		</div>
 		<span>1.And for JACK:</span>
-		<div class="asoundconf">
+		<div class="box asoundconf">
 			pcm.jack {
 			<br>&nbsp;&nbsp;type jack
 			<br>&nbsp;&nbsp;playback_ports {
@@ -131,7 +131,7 @@
 			<br>} 
 		</div>
 		<span>Now you are ready to use these PCM devices for playback. You could for example use the command 'aplay -D jack example.wav', and aplay would be automatically connected to the JACK server. And 'aplay -D pulse example.wav' would connect to PulseAudio when it is running. To make JACK or PulseAudio the default PCM for applications that use ALSA, you can add this (substitute "jack" for "pulse" if you want to use PulseAudio):</span>
-		<div class="asoundconf">
+		<div class="box asoundconf">
 			pcm.!default {
 			<br>&nbsp;&nbsp;type plug
 			<br>&nbsp;&nbsp;slave { pcm "jack" }

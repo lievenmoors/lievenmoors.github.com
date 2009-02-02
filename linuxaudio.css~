@@ -120,14 +120,23 @@ span.command {
 	font-weight:bold;
 }
 
-div.asoundconf {
-	margin:1em;
-	margin-left:2em;
-	width:15em;
+div.box {
+	margin:2em;
 	border: 1px solid #ffffff;
 	padding:0.5em;
 }
 
+div.asoundconf {
+	width:15em;
+}
+
+div.limits {
+	width:19em;
+}
+
+span.underline {
+	text-decoration:underline;
+}
 
 /*
 #license {
