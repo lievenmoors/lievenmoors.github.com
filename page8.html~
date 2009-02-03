@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>page8</title>
+<meta name="generator" content="Bluefish 1.0.7">
+<meta name="author" content="lieven moors">
+<meta name="date" content="2009-02-03T15:28:21+0100">
+<meta name="copyright" content="">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="refresh" content="6000; URL=http://lievenmoors.github.com/">
+<link href="linuxaudio.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="page">
+<h1>Plugins</h1>
+<h2>1. LADSPA (Linux Audio Developer's Simple Plugin API)</h2>
+<ul class="level1">
+	<li class="level1">LADSPA is an simple and flexible API for developing audio plugins. It has become the most widely used plugin format for Linux audio and midi programs. LADSPA is most often used for writing effect plugins, but it also provides simple sound synthesis functionality.</li>
+	<li class="level1">LADSPA plugins are compiled into shared object files (".so" extension), and are loaded as  any other shared library. One such file may contain many plugins. LADSPA plugins are usually stored in "/usr/lib/ladspa/" when you install them from the software repositories. You can set the LADSPA_PATH shell environment variable to make applications find the plugins in other directories as well. For example, if you compile plugins from source, they will normally be installed in the "/usr/local/lib/ladspa" directory. You can add this path to the LADSPA_PATH variable by adding the following line to the .profile or .bash_profile file in your home directory: export LADSPA_PATH="/usr/local/lib/ladspa:/usr/lib/ladspa:"</li>
+	<li class="level1">The LASPA package, called "ladspa-sdk" also provides three simple LADSPA utilities. To see a list of all the plugins installed on your system, you can can use the 'listplugins' command. This will show you all the shared object files, and the plugins they contain. If you want to see detailed information about a specific plugin, you can use the 'analyseplugin' plugin command. You can give it two arguments: the name of the ".so" file you want to analyse, and optionally the plugin label of a particular plugin within that file. The third utility is called "applyplugin", and it can be used to apply a specific plugin to an audio file. To see how it is used, run applyplugin without any arguments. Basically, you have to specify the input and output audio file names, the plugins ".so" file name, the plugin's label, and a number of control values (which you can look up with 'analyseplugin') to change the default plugin controls.</li>
+	<li class="level1">A number of LADSPA plugin packages are installed by default in Ubuntu Studio. If you want to find out to which plugin belongs to which package you could use this command: 'dpkg -S /usr/lib/ladspa/plugin.so', or you could search for "ladspa" in synaptic, and see what files are installed by a package (right-click package, choose 'Properties'). You can find more information for specific plugins on the homepages of those packages.</li>
+	<li class="level1">There is a program called "JACK rack" which you can use as a stand-alone 'effects rack' for LADSPA plugins. You can then connect to the inputs and outputs of this rack with JACK aware applications.</li>
+</ul>
+<p class="line"></p>
+<h2>2. DSSI (Disposable Soft Synth Interface)</h2>
+<ul class="level1">
+	<li class="level1">DSSI is written as an extension to the LADSPA API. DSSI makes it possible to write software instruments (e.g. soft synths) that can be used as plugins within a DSSI capable host. One of the main differences with LADSPA, is that DSSI plugins can accept incoming MIDI data.</li>
+	<li class="level1">DSSI also tries to address a number of limitations of stand-alone softsynths on linux. These stand-alone synths often use ALSA and JACK for audio and midi routing. But applications connected in this way, don't have any knowledge about the features of the other application (e.g. what presets an instrument has, what controllers it uses). This is something DSSI tries to provide, so that the host and the instrument can work more closely together.</li>
+	<li class="level1">DSSI plugins make use of the OpenSoundControl protocol (OSC) for the communication between the user interface and the plugin core. This makes the plugin truly independent of its GUI, and makes it possible to control the plugin over the network.</li>
+	<li class="level1">DSSI plugins are installed in the '/usr/[local]/lib/dssi' directory, and are stored in shared libraries (".so" files). You can use the DSSI_PATH environment variable to specify alternative locations where applications can find DSSI plugins. As with LADSPA plugins, one library can contain multiple plugins (although this is not usually the case), and you can use the 'analyseplugin' command (see LADSPA) to see the details of the plugin(s) in a library.</li>
+	<li class="level1">There are a number of programs that have support for DSSI plugins (e.g. Rosegarden, Qtractor). If you want to use a plugin without using one of these more extended programs, you can still load it with the 'jack-dssi-host' command. It takes the '.so' file as an argument, and optionally a colon and a label (e.g. "jack-dssi-host /usr/lib/dssi/synth.so:synth1"). This will start up the plugin, and provide the necessary audio and midi inputs/outputs in JACK and ALSA sequencer <a href="#ftn1" class="ftnsymbol" id="bodyftn1">[1]</a>. There is also a GUI program called "Ghostess", which makes use of jack-dssi-host (but you will have to compile it from source).</li>
+	<li class="level1">Examples of DSSI plugins are: Fluidsynth-DSSI, Xsynth-DSSI, Hexter, Whysynth, Sineshaper, dssi-vst... You can install a number of them with synaptic (search for dssi).</li>
+</ul>
+<p class="line"></p>
+<h2>3. LV2</h2>
+<ul class="level1">
+	<li class="level1">LV2 is meant to be the successor of LADSPA. One of the problems of LADSPA is that it cannot be extended without breaking existing implementations. LV2 is designed to be extensible from the start. A number of extensions to LV2 already exist. One of them, for example, adds MIDI support, and makes it possible to write all kinds of software instruments.</li>
+	<li class="level1">LV2 also tries to address a number of other limitations of the LADSPA plugin format. An example of this is the use of RDF (Resource Description Framework) for storing and retrieving all kinds of plugin information.</li>
+	<li class="level1">LV2 plugins are normally installed in "/usr/[local]/lib/lv2". You can use the LV2_PATH environment variable to specify alternative locations.</li>
+	<li class="level1">LV2 is still a young format, and not many applications currently support it. Examples of applications that do support LV2 are: Ardour (>= 2.5), Traverso. If you want to build a plugin, you will need to install the 'lv2core' package. Depending on the plugin, you might have to build and install LV2 extensions as well.</li>
+</ul>
+<p class="line"></p>
+<h2>4. VST plugins on Linux</h2>
+<ul class="level1">
+	<li class="level1">VST support on Linux comes in two flavours. First of all, there is VST support with the help of Wine (Wine Is Not an Emulator). This makes it possible to use VST and VSTi plugins that are actually Windows specific libraries (".dll" files). Projects that use this method are FST and dssi-vst (to load a VST plugin using a DSSI host). In addition, if you build Ardour yourself, you can build it with this kind of VST support. This method will not work for every VST plugin. To see which plugins will work with Wine you can check this site: <a href="http://ladspavst.linuxaudio.org">http://ladspavst.linuxaudio.org</a></li>
+	<li class="level1">The second way is to use Linux native VST plugins. A number of VST plugins have been open sourced, and can be compiled for the Linux system. There is a program called "Jost" that can be used as a host for these plugins (but also for LADSPA and DSSI plugins). On the website of Jost, you will find a number of these plugins as well: <a href="http://www.anticore.org/jucetice">http://www.anticore.org/jucetice</a></li>
+	<li class="level1"><span class="command">dssi-vst</span>: to compile this package from source you will need the DSSI headers (dssi-dev), wine and its headers (dev package), and liblo. Then type 'make', and 'sudo make install'. This will install the dsssi-vst adaptor in /usr/local/lib/dssi. Now you can install some VST plugins. This can be done by downloading the plugin (usually a zip file), and unzip it in a VST directory. A standard place would be '/usr/lib/vst', or '/usr/local/lib/vst'. Rosegarden, e.g. will automatically look in these directories (if the VST_PATH environment variable is not set). But to be sure that all programs find your plugins, it is best to set the VST_PATH variable to the directories of your choice. Now you should be able to use VST and VSTi plugins from within your LADSPA or DSSI host. But remember that this method has its limitations. Some plugins will work, but others won't.</li>
+</ul>
+<dl class="ftn">
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn1" id="ftn1">[1]</a></dt>
+	<dd class="ftn">You can also start up multiple plugins, or multiple instances of a plugin with one 'jack-dssi-host' command. See the man page for more detail.</dd>
+</dl>
+</div>
+</body>
+</html>

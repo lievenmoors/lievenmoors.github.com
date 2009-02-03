@@ -1,0 +1,64 @@
+<a href="#ftn1" class="ftnsymbol" id="bodyftn1">[1]</a>
+<a href="#ftn2" class="ftnsymbol" id="bodyftn2">[2]</a>
+<a href="#ftn3" class="ftnsymbol" id="bodyftn3">[3]</a>
+<a href="#ftn4" class="ftnsymbol" id="bodyftn4">[4]</a>
+<a href="#ftn5" class="ftnsymbol" id="bodyftn5">[5]</a>
+<a href="#ftn6" class="ftnsymbol" id="bodyftn6">[6]</a>
+<a href="#ftn7" class="ftnsymbol" id="bodyftn7">[7]</a>
+<a href="#ftn8" class="ftnsymbol" id="bodyftn8">[8]</a>
+<a href="#ftn9" class="ftnsymbol" id="bodyftn9">[9]</a>
+<a href="#ftn10" class="ftnsymbol" id="bodyftn10">[10]</a>
+<a href="#ftn11" class="ftnsymbol" id="bodyftn11">[11]</a>
+<a href="#ftn12" class="ftnsymbol" id="bodyftn12">[12]</a>
+
+<ul class="level1">
+	<li class="level1"></li>
+	<li class="level1"></li>
+</ul>
+
+
+<ul class="level1">
+	<li class="level1"></li>
+	<li class="level1"></li>
+	<li class="level1"></li>
+	<li class="level1"></li>
+	<li class="level1"></li>
+</ul>
+
+<ul class="level2">
+	<li class="level2"></li>
+	<li class="level2"></li>
+	<li class="level2"></li>
+	<li class="level2"></li>
+</ul>
+
+<ul class="level2">
+	<li class="level2"></li>
+	<li class="level2"></li>
+</ul>
+
+<dl class="ftn">
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn1" id="ftn1">[1]</a></dt>
+	<dd class="ftn"></dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn2" id="ftn2">[2]</a></dt>
+	<dd class="ftn"></dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn3" id="ftn3">[3]</a></dt>
+	<dd class="ftn"></dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn4" id="ftn4">[4]</a></dt>
+	<dd class="ftn"></dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn5" id="ftn5">[5]</a></dt>
+	<dd class="ftn"></dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn6" id="ftn6">[6]</a></dt>
+	<dd class="ftn"></dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn7" id="ftn7">[7]</a></dt>
+	<dd class="ftn"></dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn8" id="ftn8">[8]</a></dt>
+	<dd class="ftn"></dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn9" id="ftn9">[9]</a></dt>
+	<dd class="ftn"></dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn10" id="ftn10">[10]</a></dt>
+	<dd class="ftn"></dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn11" id="ftn11">[11]</a></dt>
+	<dd class="ftn"></dd>
+	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn12" id="ftn12">[12]</a></dt>
+	<dd class="ftn"></dd>

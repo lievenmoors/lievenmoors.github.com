@@ -17,6 +17,7 @@ a:link {
 
 a:visited {
 	color: #FFFFFF;
+	outline: none;
 }
 
 a:hover {
@@ -138,6 +139,32 @@ span.underline {
 	text-decoration:underline;
 }
 
+
+#index {
+//	border:1px solid #ffffff;
+	font-size:1.05em;
+	margin-top:2em;
+}
+
+#index tr {
+//	border:1px solid #ffffff;
+}
+
+#index td {
+//	border:1px solid #ffffff;
+	padding-bottom:0.5em;
+}
+
+#index td.column2 { 
+	padding-left:2em;	
+}
+
+#main_title { 
+}
+
+#opener {
+	margin-top:5em;
+}
 /*
 #license {
 	position: absolute;	/*to centre an element with an absolute position*/
