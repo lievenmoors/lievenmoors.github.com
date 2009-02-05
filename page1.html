@@ -4,7 +4,7 @@
 <title>page1</title>
 <meta name="generator" content="Bluefish 1.0.7">
 <meta name="author" content="lieven moors">
-<meta name="date" content="2009-02-04T20:38:23+0100">
+<meta name="date" content="2009-02-05T12:02:07+0100">
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -18,6 +18,7 @@
 <body>
 <div class="page">
 <h1>Introduction to GNU/Linux</h1>
+<span class="back_to_index"><a href="index.html" class="index_link">back to index</a></span>
 <h2>1. History</h2>
 <ul class="level1">
 	<li class="level1">The name "Linux" comes from the Linux kernel originally written in 1991 by Linus Torvalds.</li>
@@ -158,6 +159,7 @@
 	<li class="level1">One of the difficulties with installed source packages, is that it is not so easy to uninstall them. Sometimes you will be able to issue <span class="command">sudo make uninstall</span> from within the source package directory. But this will not always be the case. And once the files are installed in the '/usr/local' hierarchy, it is very hard to know which files belongs to which package. That is why I would like to introduce you to the 'Stow' system. The idea is that we install every package we build from source into it's own subdirectory in the '/usr/local/stow' directory. When this is done, we can use the <span class="command">stow</span> command to make links in the '/usr/local' hierarchy for every file in that subdirectory. Now our system will recognize the programs and libraries we installed. When we want to delete a package, we can use 'stow' again to delete all the links for that package in the '/usr/local' hierarchy. And we can start from a clean slate again. Stow makes it also very easy to have multiple versions of a package installed. You can install them next to each other in the '/usr/local/stow' directory. The system won't know about them until you make the necessary links with stow. To use a newer version of a program, you delete the links to the older version, and make new ones to the new version. Completely deleting a package from your system is very simple as well. Just delete the links with the 'stow' command, and remove the directory of that program.</li>
 	<li class="level1">I will now give you an example of installing a source package with the help of stow (You have to install the stow package with synaptic first). Lets say that we want to install a package named package-1.2 .We compile the package first with the <span class="command">./configure</span> and <span class="command">make</span> commands (it doesn't matter from where). Then we install the package in its own directory in the stow directory with: <span class="command">sudo make install prefix=/usr/local/stow/package-1.2</span>. Now we have to cd into the stow directory (/usr/local/stow), and let stow create the necessary links with this command: <span class="command">stow package-1.2</span>. To delete the links to your package again type <span class="command">stow -D package-1.2</span> from the '/usr/local/stow' directory.</li>
 </ul>
+<span class="back_to_index"><a class="index_link" href="index.html">back to index</a></span>
 <dl class="ftn">
 	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn1" id="ftn1">[1]</a></dt>
 	<dd class="ftn">Once you're out of X, you can just type Alt+(F1-F7)</dd>

@@ -25,16 +25,22 @@ a:hover {
 	text-decoration:none;
 }
 
+#license {
+	position:relative;
+	font-size:1.5em;
+	margin-top:9em;
+}
 
 #license-image {
 	position: absolute;
-	bottom: 16px;
+	bottom:0em;
+	left:2em;
 }
 
 #license-text {
 	position: absolute;
-	bottom: 20px;
-	margin-left:99px;
+	bottom: 0.3em;
+	margin-left:8em;
 }
 
 div.page {
@@ -93,7 +99,7 @@ li.level2 {
 
 dl.ftn {
 	font-size:0.8em;
-	margin-top:5em; 
+	margin-top:9em; 
 }
 
 dt.ftn {
@@ -163,6 +169,20 @@ span.underline {
 #opener {
 	margin-top:5em;
 }
+
+.back_to_index {
+	position:relative;
+	width:100pc;
+}
+
+.index_link {
+	position:absolute;
+	width:10em;
+	top:0.5em;
+	left:49em;
+}
+
+
 /*
 #license {
 	position: absolute;	/*to centre an element with an absolute position*/

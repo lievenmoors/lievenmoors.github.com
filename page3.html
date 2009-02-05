@@ -4,7 +4,7 @@
 <title>page3</title>
 <meta name="generator" content="Bluefish 1.0.7">
 <meta name="author" content="lieven moors">
-<meta name="date" content="2009-02-04T20:38:21+0100">
+<meta name="date" content="2009-02-05T12:05:07+0100">
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -18,6 +18,7 @@
 <body>
 <div class="page">
 <h1>JACK (JACK Audio Connection Kit)</h1>
+<span class="back_to_index"><a href="index.html" class="index_link">back to index</a></span>
 <ul class="level1">
 	<li class="level1">JACK is a low-latency audio server. To adress the soundcard (driver), JACK can use the ALSA system (but also other backend systems like OSS f.e.). But it provides additional features that are missing from ALSA. One of this features is synchronization. When applications make use of the JACK server, they are able to run in exact sync with each other. This means that you can push the 'play' button in one program, and a second program will start playing in exact sync with the first one. Another important feature of JACK, is that it provides a way to route audio (and now also midi) between various applications (inter-application routing). When a program connects to JACK, it gets assigned a number of 'ports'. And these input and output ports can be connected freely with each other. You can connect one output port to multiple input ports, or you can connect multiple output ports to one input port. This makes it possible to make very complex connection schemes between programs. Apart from this, JACK makes it possible to connect multiple programs to the same audio interface. You can use the outputs and inputs of the audio interface as any other output or input ports.</li>
 	<li class="level1">The command you use to startup the JACK server is <span class="command">jackd</span>. The "d" suffix stands for "daemon". A daemon is a program that is normally run in the 'background', and this means it is not under the direct control of the user. A daemon is typically a program that has to run continuously, so that other programs can connect to it at all times. The jackd command accepts a great number of options to configure the server (man jackd). We will discuss a number of these in a moment.</li>
@@ -53,6 +54,7 @@
 		</ul>
 	</li>
 </ul>
+<span class="back_to_index"><a class="index_link" href="index.html">back to index</a></span>
 <dl class="ftn">
 	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn1" id="ftn1">[1]</a></dt>
 	<dd class="ftn">Actually, realtime priority ranges from 0 to 99. If you set the priority to 89,  JACK will have one of its threads running at 99. You can see the realtime priority of all threads on your system with 'ps -eLo command,rtprio'</dd>
