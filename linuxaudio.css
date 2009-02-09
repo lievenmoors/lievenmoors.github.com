@@ -58,7 +58,7 @@ h1 {
 
 h2 {
 	font-size:1.3em;
-	margin-top:3em;
+	margin-top:2em;
 	margin-left:0.5em;
 }
 
@@ -171,16 +171,9 @@ span.underline {
 }
 
 .back_to_index {
-	position:relative;
-	width:100pc;
+	text-align:right;
 }
 
-.index_link {
-	position:absolute;
-	width:10em;
-	top:0.5em;
-	left:49em;
-}
 
 
 /*

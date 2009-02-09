@@ -4,7 +4,7 @@
 <title>page2</title>
 <meta name="generator" content="Bluefish 1.0.7">
 <meta name="author" content="lieven moors">
-<meta name="date" content="2009-02-05T12:04:55+0100">
+<meta name="date" content="2009-02-09T12:53:08+0100">
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -18,7 +18,7 @@
 <body>
 <div class="page">
 <h1>ALSA (Advanced Linux Sound Architecture)</h1>
-<span class="back_to_index"><a href="index.html" class="index_link">back to index</a></span>
+<div class="back_to_index"><a href="index.html" class="index_link">back to index</a></div> 
 <h2>1. Introduction</h2>
 <ul class="level1">
 	<li class="level1">ALSA provides audio and midi functionality for the Linux system. Alsa is split up into a number of different parts:
@@ -144,7 +144,7 @@
 <ul class="level1">
 	<li class="level1">ALSA provides support for programs that use the older OSS system. There are two ways in which ALSA can do this. The first way is by using the ALSA OSS compatibility modules. These will be loaded by default in Ubuntu Studio (see '/etc/modprobe.d/alsa-base'). Their names are:  snd-pcm-oss, snd-mixer-oss, and snd-seq-oss. Programs that use OSS make use of device files called "/dev/dsp", "/dev/mixer" and "/dev/audio". When the modules are loaded, these devices will appear on your system. The second way ALSA provides OSS support, is by using a so called wrapper library, which is called libaoss. You can use the <span class="command">aoss</span> command to start up your OSS program. This will make the program use the default ALSA devices, located in "/dev/snd". In addition, the program will be able to make use of the ALSA PCM plugins (this is not possible when you use the kernel modules).</li>
 </ul>
-<span class="back_to_index"><a class="index_link" href="index.html">back to index</a></span>
+<div class="back_to_index"><a class="index_link" href="index.html">back to index</a></div>
 <dl class="ftn">
 	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn1" id="ftn1">[1]</a></dt>
 	<dd class="ftn">If you have multiple cards, you have to specify the index for all your cards. Otherwise, this might not work as expected.</dd>
