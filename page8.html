@@ -4,7 +4,7 @@
 <title>page8</title>
 <meta name="generator" content="Bluefish 1.0.7">
 <meta name="author" content="lieven moors">
-<meta name="date" content="2009-02-09T12:54:39+0100">
+<meta name="date" content="2009-02-10T14:02:09+0100">
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -52,11 +52,11 @@
 	<li class="level1">The second way is to use Linux native VST plugins. A number of VST plugins have been open sourced, and can be compiled for the Linux system. There is a program called "Jost" that can be used as a host for these plugins (but also for LADSPA and DSSI plugins). On the website of Jost, you will find a number of these plugins as well: <a href="http://www.anticore.org/jucetice">http://www.anticore.org/jucetice</a></li>
 	<li class="level1"><span class="command">dssi-vst</span>: to compile this package from source you will need the DSSI headers (dssi-dev), wine and its headers (dev package), and liblo. Then type 'make', and 'sudo make install'. This will install the dsssi-vst adaptor in /usr/local/lib/dssi. Now you can install some VST plugins. This can be done by downloading the plugin (usually a zip file), and unzip it in a VST directory. A standard place would be '/usr/lib/vst', or '/usr/local/lib/vst'. Rosegarden, e.g. will automatically look in these directories (if the VST_PATH environment variable is not set). But to be sure that all programs find your plugins, it is best to set the VST_PATH variable to the directories of your choice. Now you should be able to use VST and VSTi plugins from within your LADSPA or DSSI host. But remember that this method has its limitations. Some plugins will work, but others won't.</li>
 </ul>
+<div class="back_to_index"><a class="index_link" href="index.html">back to index</a></div>
 <dl class="ftn">
 	<dt class="ftn"><a class="ftnsymbol" href="#bodyftn1" id="ftn1">[1]</a></dt>
 	<dd class="ftn">You can also start up multiple plugins, or multiple instances of a plugin with one 'jack-dssi-host' command. See the man page for more detail.</dd>
-</dl>
-<div class="back_to_index"><a class="index_link" href="index.html">back to index</a></div> 
+</dl> 
 </div>
 </body>
 </html>
