@@ -1,0 +1,188 @@
+/*colors: grijsblauw:#373749*/ 
+
+body {
+	font-family: courier new, fixed, monospace;
+	font-size:62.5%;
+	color: #FFFFFF; 
+	background-color: #2A3749;
+	background-image:url("background.gif");
+	text-align: left;
+}
+
+
+a:link {
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+
+
+a:visited {
+	color: #FFFFFF;
+	outline: none;
+}
+
+a:hover {
+	text-decoration:none;
+}
+
+#license {
+	position:relative;
+	font-size:1.5em;
+	margin-top:7em;
+}
+
+#license-image {
+	position: absolute;
+	bottom:0em;
+	left:2em;
+}
+
+#license-text {
+	position: absolute;
+	bottom: 0.3em;
+	margin-left:8em;
+}
+
+div.page {
+	margin-left:1.5em;
+	margin-right:7em;
+	padding:0;
+	font-size:1.5em; 
+}
+
+
+h1 {
+	font-size:1.6em;
+	text-decoration:underline;
+}
+
+h2 {
+	font-size:1.3em;
+	margin-top:2em;
+	margin-left:0.5em;
+}
+
+ul {
+	padding:0;
+	
+	/*border: 1px solid #000;*/
+	
+}
+
+li {
+	padding-left:0;
+	/*border: 1px solid #000;*/
+}
+
+ul.level1 {
+	list-style-type:disc;
+	margin-top: 2.7em;
+	margin-left:3em;
+}
+
+li.level1 { 
+	padding-left:0.5em;
+	margin-bottom:1em;
+}
+
+ul.level2 {
+	list-style-type:none;
+	list-style-image: url(dash.gif);
+	margin-top: 0.6em;
+	margin-left:2em;
+}
+
+li.level2 {
+	margin-bottom:0.5em;
+	padding-left:0.2em;
+}
+
+dl.ftn {
+	font-size:0.8em;
+	margin-top:9em; 
+}
+
+dt.ftn {
+	display:inline;
+	float:left;
+	clear:left;
+}
+
+dd.ftn {
+	
+}
+
+
+a.ftnsymbol {
+	/*vertical-align:top;*/
+	text-decoration:none;
+}
+
+p.line {
+	border-bottom: 1px ridge #ffffff;
+	margin-left:3.4em;
+	margin-top:2em;
+}
+
+span.command {
+	font-weight:bold;
+}
+
+div.box {
+	margin:2em;
+	border: 1px solid #ffffff;
+	padding:0.5em;
+}
+
+div.asoundconf {
+	width:15em;
+}
+
+div.limits {
+	width:19em;
+}
+
+span.underline {
+	text-decoration:underline;
+}
+
+
+#index {
+	font-size:1.05em;
+	margin-top:2em;
+}
+
+#index tr {
+}
+
+#index td {
+	padding-bottom:0.5em;
+}
+
+#index td.column2 { 
+	padding-left:2em;	
+}
+
+#main_title { 
+}
+
+#opener {
+	margin-top:5em;
+}
+
+.back_to_index {
+	text-align:right;
+}
+
+
+
+/*
+#license {
+	position: absolute;	/*to centre an element with an absolute position*/
+	bottom: 0.5em;			/*you have to set left,right position to same value*/
+	left: 0em;
+	right: 0em;
+	margin-left: auto;
+	margin-right: auto;
+	
+} */  
