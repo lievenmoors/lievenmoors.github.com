@@ -40,7 +40,7 @@ a:hover {
 #license-text {
 	position: absolute;
 	bottom: 0.3em;
-	margin-left:8em;
+	margin-left:8.5em;
 }
 
 div.page {
