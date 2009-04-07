@@ -4,11 +4,11 @@
 <title>Introduction to Linux & Audio</title>
 <meta name="generator" content="Bluefish 1.0.7">
 <meta name="author" content="lieven moors">
-<meta name="date" content="2009-03-02T21:20:46+0100">
+<meta name="date" content="2009-04-07T16:12:06+0200">
 <meta name="copyright" content="">
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<meta name="keywords" content="linux, kernel, audio, midi, softsynths, alsa, jack, qjackctl, ardour, rosegarden, linuxsampler, qsampler, zynaddsubfx, phasex, minicomputer, plugins, ladspa, lv2, dssi, gigedit, gigasampler, soundfont, swami, realtime">
+<meta name="description" content="website about audio applications on linux">
+<meta name="ROBOTS" content="INDEX, FOLLOW">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
 <meta http-equiv="content-style-type" content="text/css">
@@ -38,7 +38,7 @@
 	</tr>
 </table>
 <div id="opener">
-<p>These pages have been written for a series of twelve lectures I gave about audio applications on the GNU/Linux operating system. For these lectures the '<a href="http://ubuntustudio.org/">Ubuntu Studio</a>' linux distribution (based on Ubuntu Hardy) was used. Because open source programs are always in rapid development, this information might be outdated soon. In fact, a lot of the programs available from the Ubuntu repositories are already quite old. So if you compiled newer versions of these programs, some of the things I wrote will be outdated already. Anyway, I hope that these pages might serve as a useful reference for anyone interested in audio applications on Linux.</p>
+<p>These pages have been written for a series of twelve lectures I gave about audio applications on the GNU/Linux operating system. For these lectures the <a href="http://ubuntustudio.org/">Ubuntu Studio</a> linux distribution (based on Ubuntu Hardy) was used. Because open source programs are always in rapid development, this information might be outdated soon. In fact, a lot of the programs available from the Ubuntu repositories are already quite old. So if you compiled newer versions of these programs, some of the things I wrote will be outdated already. Anyway, I hope that these pages might serve as a useful reference for anyone interested in audio applications on Linux.</p>
 </div>
 <div id="email">
 <p>If you want more information about these lectures, or if you have comments on this website, you can always email me at lievenmoors[at]hotmail[dot]com.</p>
