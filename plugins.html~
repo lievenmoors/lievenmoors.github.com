@@ -4,7 +4,7 @@
 <title>plugins</title>
 <meta name="generator" content="Bluefish 1.0.7">
 <meta name="author" content="lieven moors">
-<meta name="date" content="2009-03-02T22:07:25+0100">
+<meta name="date" content="2009-03-02T22:09:19+0100">
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -40,7 +40,7 @@
 <p class="line"></p>
 <h2>3. LV2</h2>
 <ul class="level1">
-	<li class="level1">LV2 is meant to be the successor of LADSPA. One of the problems of LADSPA is that it cannot be extended without breaking existing implementations. LV2 is designed to be extensible from the start. A number of extensions to LV2 already exist. One of them, for example, adds MIDI support, and makes it possible to write all kinds of software instruments.</li>
+	<li class="level1"><a href="http://lv2plug.in/">LV2</a> is meant to be the successor of LADSPA. One of the problems of LADSPA is that it cannot be extended without breaking existing implementations. LV2 is designed to be extensible from the start. A number of extensions to LV2 already exist. One of them, for example, adds MIDI support, and makes it possible to write all kinds of software instruments.</li>
 	<li class="level1">LV2 also tries to address a number of other limitations of the LADSPA plugin format. An example of this is the use of RDF (Resource Description Framework) for storing and retrieving all kinds of plugin information.</li>
 	<li class="level1">LV2 plugins are normally installed in "/usr/[local]/lib/lv2". You can use the LV2_PATH environment variable to specify alternative locations.</li>
 	<li class="level1">LV2 is still a young format, and not many applications currently support it. Examples of applications that do support LV2 are: Ardour (>= 2.5), Traverso. If you want to build a plugin, you will need to install the 'lv2core' package. Depending on the plugin, you might have to build and install LV2 extensions as well.</li>
